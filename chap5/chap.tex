@@ -1,0 +1,266 @@
+\ifx\allfiles\undefined
+\documentclass[12pt, a4paper, oneside, UTF8]{ctexbook}
+\def\path{../config}
+\input{../config/_config}
+\begin{document}
+% \input{../config/cover}
+\else
+\fi
+\chapter{相似对角化}
+\section{特征值与特征向量}
+\begin{definition}
+	设 $\bm{A}$ 是 $n$ 阶矩阵, 如果数 $\lambda$ 和 $n$ 维非零列向量 $\bm{\alpha}$ 使关系式
+	\begin{equation}
+		\bm{A}\bm{\alpha} = \lambda\bm{\alpha} \quad (\text{或 } (\lambda \bm{E} - \bm{A})\bm{\alpha} = \bm{0})
+	\end{equation}
+	成立, 那么, 这样的数 $\lambda$ 称为矩阵 $\bm{A}$ 的\textbf{特征值}, 非零向量 $\bm{\alpha}$ 称为 $\bm{A}$ 的对应于特征值 $\lambda$ 的\textbf{特征向量}.
+\end{definition}
+
+\begin{theorem}
+    设 $\lambda_1, \lambda_2, \cdots, \lambda_n$ 是 $n$ 阶矩阵 $\bm{A}$ 的全部特征值, 则有如下结论:
+	\begin{enumerate}
+		\item $n$ 阶矩阵 $\bm{A}=(a_{ij})$ 的特征值 $\lambda$ 就是特征方程 $|\lambda \bm{E} - \bm{A}|=0$ 的根.
+		\item $\sum_{i=1}^n \lambda_i = \sum_{i=1}^n a_{ii} = \operatorname{tr}(\bm{A})$.
+		\item $\prod_{i=1}^n \lambda_i = |\bm{A}|$.
+		\item 常用性质如下表 (设 $\lambda, \bm{\alpha}$ 分别为 $\bm{A}$ 的特征值与特征向量，$\phi$表示多项式函数\footnotemark):
+			\begin{center}
+				\begin{tabular}{|c|c|c|c|c|c|}
+					\hline
+					\textbf{矩阵} & $\phi(\bm{A})$ & $\bm{A}^{-1}$ ($|\bm{A}| \neq 0$) & $\bm{A}^*$ & $\bm{A}^T$ & $\bm{P}^{-1}\bm{A}\bm{P}$ \\
+					\hline
+					\textbf{特征值} & $\phi(\lambda)$ & $\lambda^{-1}$ & $|\bm{A}|\lambda^{-1}$ & $\lambda$ & $\lambda$ \\
+					\hline
+					\textbf{特征向量} & $\bm{\alpha}$ & $\bm{\alpha}$ & $\bm{\alpha}$ & — & $\bm{P}^{-1}\bm{\alpha}$ \\
+					\hline
+				\end{tabular}
+                \begin{myRemark}
+                    其中$\bm{P}$ 为可逆矩阵.\\
+                    $\phi(x)=0$的解不一定是$\bm{A}$的特征值.
+                \end{myRemark}
+			\end{center}
+		\item 对于秩 1 矩阵 $\bm{A}=\bm{\alpha}\bm{\beta}^T$, 其特征值为 $\operatorname{tr}(\bm{A})=\bm{\beta}^T\bm{\alpha}$ (1 重) 和 $0$ ($n-1$ 重). 非零特征值对应的特征向量为 $\bm{\alpha}$.
+		\item 不同特征值对应的特征向量线性无关.
+		\item 对应于同一特征值的不同特征向量的线性组合仍是该特征值的特征向量.
+	\end{enumerate}
+\end{theorem}
+\footnotetext{本章中均以$\phi$表示多项式函数}
+\begin{definition}
+    设 $\lambda$ 是矩阵 $\bm{A}$ 的特征值, 则称特征方程 $|\lambda \bm{E} - \bm{A}|=0$ 中 $\lambda$ 的重数为 $\lambda$ 的\textbf{代数重数}, 称由 $(\lambda \bm{E} - \bm{A})\bm{\alpha}=\bm{0}$ 所确定的齐次线性方程组的解空间的维数为 $\lambda$ 的\textbf{几何重数}.
+\end{definition}
+\begin{theorem}
+    设 $\lambda_1, \lambda_2, \cdots, \lambda_n$ 是 $n$ 阶矩阵 $\bm{A}$ 的全部特征值, 则有如下结论:\\
+    对于任意特征值 $\lambda$，几何重数总是小于等于代数重数.\\
+    当且仅当所有特征值的几何重数等于代数重数时，矩阵 $A$ 可对角化.
+\end{theorem}
+
+\section{相似对角化}
+\begin{definition}
+	设 $\bm{A}, \bm{B}$ 都是 $n$ 阶矩阵, 若有可逆矩阵 $\bm{P}$, 使 $\bm{P}^{-1}\bm{A}\bm{P}=\bm{B}$, 则称 $\bm{A}$ 与 $\bm{B}$ \textbf{相似}, 记为 $\bm{A} \sim \bm{B}$.
+\end{definition}
+\begin{theorem}
+	若 $\bm{A} \sim \bm{B}$, 则
+	\begin{multicols}{2}
+		\begin{enumerate}
+			\item $|\lambda \bm{E} - \bm{A}| = |\lambda \bm{E} - \bm{B}|$.
+			\item $|\bm{A}| = |\bm{B}|$.
+			\item $\operatorname{tr}(\bm{A}) = \operatorname{tr}(\bm{B})$.
+			\item $\rank(\bm{A}) = \rank(\bm{B})$.
+			\item $\bm{A}^T \sim \bm{B}^T$
+			\item $\bm{A}^{-1} \sim \bm{B}^{-1}$ (若 $|\bm{A}| \neq 0$)
+			\item $\phi(\bm{A}) \sim \phi(\bm{B})$.
+			\item $\bm{A}^*$ $\sim$ $\bm{B}^*$.
+			\item 若 $\lambda$ 是 $\bm{A}$ 的特征值, 则也是 $\bm{B}$ 的特征值.
+		\end{enumerate}
+	\end{multicols}
+\end{theorem}
+\begin{definition}
+	若 $n$ 阶矩阵 $\bm{A}$ 与对角矩阵相似, 则称 $\bm{A}$ 能\textbf{相似对角化}.
+\end{definition}
+\begin{theorem}[相似对角化的条件]
+    下面结论成立:
+	\begin{enumerate}
+		\item \textbf{充要条件}: $n$ 阶矩阵 $\bm{A}$ 可相似对角化 $\iff$ $\bm{A}$ 有 $n$ 个线性无关的特征向量.
+		\item \textbf{充分条件}: 若 $n$ 阶矩阵 $\bm{A}$ 有 $n$ 个互异特征值, 则 $\bm{A}$ 必可相似对角化.
+		\item \textbf{实对称矩阵}: 实对称矩阵必可正交相似对角化.
+		\item \textbf{秩 1 矩阵}: 秩 1 矩阵 $\bm{A}=\bm{\alpha}\bm{\beta}^T$ 可相似对角化, 当且仅当 $\operatorname{tr}(\bm{A})=\bm{\beta}^T\bm{\alpha} \neq 0$.
+	\end{enumerate}
+\end{theorem}
+
+\section{施密特正交化}
+\begin{definition}
+    若 $n$ 维向量空间 $V$ 中的一组基 $\bm{\alpha}_1, \bm{\alpha}_2, \cdots, \bm{\alpha}_n$ 满足 $(\bm{\alpha}_i, \bm{\alpha}_j) = 0 \ (i \neq j)$, 则称其为\textbf{正交基}; 若还满足 $(\bm{\alpha}_i, \bm{\alpha}_i) = 1$, 则称其为\textbf{规范正交基}.
+\end{definition}
+
+\begin{theorem}[施密特正交化]
+    设 $\bm{\alpha}_1, \bm{\alpha}_2, \cdots, \bm{\alpha}_r$ 线性无关, 令
+    \begin{align*}
+        \bm{\beta}_1 &= \bm{\alpha}_1, \\
+        \bm{\beta}_2 &= \bm{\alpha}_2 - \frac{(\bm{\alpha}_2, \bm{\beta}_1)}{(\bm{\beta}_1, \bm{\beta}_1)}\bm{\beta}_1, \\
+        &\cdots \\
+        \bm{\beta}_k &= \bm{\alpha}_k - \sum_{j=1}^{k-1} \frac{(\bm{\alpha}_k, \bm{\beta}_j)}{(\bm{\beta}_j, \bm{\beta}_j)}\bm{\beta}_j, \quad (k=2, \dots, r)
+    \end{align*}
+    则 $\bm{\beta}_1, \bm{\beta}_2, \cdots, \bm{\beta}_r$ 两两正交, 且与 $\bm{\alpha}_1, \bm{\alpha}_2, \cdots, \bm{\alpha}_r$ 等价.
+    再将 $\bm{\beta}_i$ 单位化, 即令 $\bm{\eta}_i = \frac{\bm{\beta}_i}{\|\bm{\beta}_i\|}$, 则 $\bm{\eta}_1, \cdots, \bm{\eta}_r$ 为规范正交向量组.
+    \begin{myRemark}
+        施密特正交化过程实际上是将每个向量减去它在前面已正交化向量上的投影.
+    \end{myRemark}
+\end{theorem}
+\section{实对称矩阵}
+\begin{theorem}
+	设 $\bm{A}$ 为 $n$ 阶实对称矩阵, 则
+	\begin{enumerate}
+		\item $\bm{A}$ 的特征值全为实数.
+		\item $\bm{A}$ 的对应于不同特征值的特征向量相互正交.
+		\item 必存在正交矩阵 $\bm{Q}$, 使得 $\bm{Q}^{-1}\bm{A}\bm{Q} = \bm{Q}^T\bm{A}\bm{Q} = \bm{\Lambda}$, 其中 $\bm{\Lambda}$ 为对角矩阵, 对角线元素为 $\bm{A}$ 的特征值.
+        \item $k$ 重特征值必对应 $k$ 个线性无关的特征向量.
+	\end{enumerate}
+\end{theorem}
+\begin{theorem}[谱分解]
+    设 $\bm{A}$ 为 $n$ 阶实对称矩阵，$\lambda_1, \cdots, \lambda_n$ 为其特征值，$\bm{e}_1, \cdots, \bm{e}_n$ 为对应的规范正交特征向量，则
+    \[ \bm{A} = \sum_{i=1}^n \lambda_i \bm{e}_i \bm{e}_i^T \]
+\end{theorem}
+\begin{proof}
+    由实对称矩阵性质，存在正交矩阵 $\bm{Q}=(\bm{e}_1, \cdots, \bm{e}_n)$ 使得 $\bm{Q}^T\bm{A}\bm{Q} = \bm{\Lambda}$.
+    于是
+    \begin{align*}
+        \bm{A} &= \bm{Q}\bm{\Lambda}\bm{Q}^T \\
+        &= (\bm{e}_1, \cdots, \bm{e}_n) \begin{bNiceMatrix}[columns-width = 1.8em] \lambda_1 & & \\
+             & \ddots & \\
+             & & \lambda_n \end{bNiceMatrix} \begin{bNiceMatrix} \bm{e}_1^T \\
+                 \vdots \\
+                  \bm{e}_n^T \end{bNiceMatrix} \\
+        &= \sum_{i=1}^n \lambda_i \bm{e}_i \bm{e}_i^T
+    \end{align*}
+\end{proof}
+\section{相似对角化练习}
+\begin{exercise}
+    设 $\bm{A}_{3 \times 3}$为实对称矩阵，且满足$\rank(\bm{A})=2$，已知$\bm{A}\begin{bNiceMatrix}
+        1 & 1\\
+        0 & 0\\
+        -1 & 1
+    \end{bNiceMatrix}=\begin{bNiceMatrix}
+        -1 & 1\\
+        0 & 0\\
+        1 & 1
+    \end{bNiceMatrix}$，求$\bm{A}$
+\end{exercise}
+\begin{solution}
+设 $\bm{\alpha}_1=(1,0,-1)^T, \bm{\alpha}_2=(1,0,1)^T$。由已知条件可得：
+\[ \bm{A}\bm{\alpha}_1 = \begin{bNiceMatrix} -1 \\ 0 \\ 1 \end{bNiceMatrix} = -1 \bm{\alpha}_1, \quad \bm{A}\bm{\alpha}_2 = \begin{bNiceMatrix} 1 \\ 0 \\ 1 \end{bNiceMatrix} = 1 \bm{\alpha}_2 \]
+即 $\lambda_1=-1, \bm{\alpha}_1$; $\lambda_2=1, \bm{\alpha}_2$ 为 $\bm{A}$ 的特征对。
+又 $\rank(\bm{A})=2$，故 $\lambda_3=0$。
+由谱分解定理：
+\begin{align*}
+    \bm{A} &= \lambda_1 \frac{\bm{\alpha}_1\bm{\alpha}_1^T}{\|\bm{\alpha}_1\|^2} + \lambda_2 \frac{\bm{\alpha}_2\bm{\alpha}_2^T}{\|\bm{\alpha}_2\|^2} + \lambda_3 \frac{\bm{\alpha}_3\bm{\alpha}_3^T}{\|\bm{\alpha}_3\|^2} \\
+    &= -1 \cdot \frac{1}{2} \begin{bNiceMatrix} 1 & 0 & -1 \\ 0 & 0 & 0 \\ -1 & 0 & 1 \end{bNiceMatrix} + 1 \cdot \frac{1}{2} \begin{bNiceMatrix} 1 & 0 & 1 \\ 0 & 0 & 0 \\ 1 & 0 & 1 \end{bNiceMatrix} + 0 \\
+    &= \frac{1}{2} \begin{bNiceMatrix} 0 & 0 & 2 \\ 0 & 0 & 0 \\ 2 & 0 & 0 \end{bNiceMatrix} = \begin{bNiceMatrix} 0 & 0 & 1 \\ 0 & 0 & 0 \\ 1 & 0 & 0 \end{bNiceMatrix}
+\end{align*}
+\end{solution}
+\begin{exercise}
+    已知实对称矩阵$\bm{A}_{3 \times 3}$的特征值为$1,1,4$，且对应于特征值$4$的特征向量为$(1, -1, -1)^T$，求$\bm{A}$
+\end{exercise}
+\begin{solution}
+    令 $\bm{B} = \bm{A} - \bm{E}$，则 $\bm{B}$ 的特征值为 $0, 0, 3$.
+    对应于特征值 $3$ 的特征向量为 $\bm{\xi}=(1, -1, -1)^T$.
+    由谱分解公式，
+    \[ \bm{B} = 3 \frac{\bm{\xi}\bm{\xi}^T}{\|\bm{\xi}\|^2} = 3 \cdot \frac{1}{3} \begin{bNiceMatrix} 1 \\ -1 \\ -1 \end{bNiceMatrix} (1, -1, -1) = \begin{bNiceMatrix} 1 & -1 & -1 \\ -1 & 1 & 1 \\ -1 & 1 & 1 \end{bNiceMatrix} \]
+    故
+    \[ \bm{A} = \bm{B} + \bm{E} = \begin{bNiceMatrix} 2 & -1 & -1 \\ -1 & 2 & 1 \\ -1 & 1 & 2 \end{bNiceMatrix} \]
+\end{solution}
+\begin{exercise}
+    已知矩阵$\bm{A}_{3 \times 3}$满足$\rank(\bm{A}-2\bm{E})=1,\,\rank(\bm{A}+\bm{E})=2$，求$A_{11}+A_{22}+A_{33}$($A_{ii}$为代数余子式)
+\end{exercise}
+\begin{solution}
+几何重数 $g(\lambda) = n - \rank(\bm{A}-\lambda\bm{E})$。
+$g(2) = 3 - 1 = 2 \implies$ 至少 2 重特征值 2。
+$g(-1) = 3 - 2 = 1 \implies$ 至少 1 重特征值 -1。
+故 $\bm{A}$ 特征值为 $2, 2, -1$。
+\[ A_{11}+A_{22}+A_{33} = \operatorname{tr}(\bm{A}^*) = \sum_{i<j} \lambda_i\lambda_j = 2\times 2 + 2\times(-1) + 2\times(-1) = 0 \]
+\end{solution}
+\begin{exercise}
+    已知矩阵$\bm{A}_{3 \times 3}$满足$\bm{A}^3\bm{\alpha}=3\bm{A}\bm{\alpha}-2\bm{A}^2\bm{\alpha}$，同时又有$\bm{\alpha}, \bm{A\alpha}, \bm{A}^2\bm{\alpha}$线性无关，求证：$|\bm{A}|=|\bm{A}+3\bm{E}|=|\bm{A}-\bm{E}|=0,\,|\bm{A}+\bm{E}|=-4$
+\end{exercise}
+\begin{solution}
+    设 $\bm{P}=(\bm{\alpha}, \bm{A}\bm{\alpha}, \bm{A}^2\bm{\alpha})$，因列向量线性无关，故 $\bm{P}$ 可逆。
+    \[ 
+    \bm{A}\bm{P} = (\bm{A}\bm{\alpha}, \bm{A}^2\bm{\alpha}, \bm{A}^3\bm{\alpha})=(\bm{\alpha}, \bm{A}\bm{\alpha}, \bm{A}^2\bm{\alpha}) \begin{bNiceMatrix} 0 & 0 & 0 \\ 1 & 0 & 3 \\ 0 & 1 & -2 \end{bNiceMatrix} = \bm{P}\bm{C} 
+    \]
+    故 $\bm{A} \sim \bm{C} = \begin{bNiceMatrix} 0 & 0 & 0 \\ 1 & 0 & 3 \\ 0 & 1 & -2 \end{bNiceMatrix}$。
+    $\bm{C}$ 的特征多项式 $|\lambda\bm{E}-\bm{C}| =\lambda(\lambda-1)(\lambda+3)$。
+    特征值为 $0, 1, -3$。
+    故 $|\bm{A}| = 0 \cdot 1 \cdot (-3) = 0$。\\
+    $\bm{A}+3\bm{E}$ 的特征值为 $3, 4, 0\Rightarrow|\bm{A}+3\bm{E}|=0$\\
+    $\bm{A}-\bm{E}$ 的特征值为 $-1, 0, -4\Rightarrow|\bm{A}-\bm{E}|=0$\\
+    $\bm{A}+\bm{E}$ 的特征值为 $1, 2, -2\Rightarrow|\bm{A}+\bm{E}|=-4$
+\end{solution}
+\begin{exercise}
+    设$\bm{A}=\begin{bNiceMatrix}
+        -2 & -2 & 1\\
+        2 & x & -2\\
+        0 & 0 & -2
+    \end{bNiceMatrix}\text{和}\bm{B}=\begin{bNiceMatrix}
+        2 & 1 & 0\\
+        0 & -1 & 0\\
+        0 & 0 & y
+    \end{bNiceMatrix}$相似，求可逆矩阵$\bm{P}$，使得$\bm{P}^{-1}\bm{AP}=\bm{B}$
+\end{exercise}
+\begin{solution}
+由 $\operatorname{tr}(\bm{A}) = \operatorname{tr}(\bm{B}) \implies x-4 = y+1$ 及 $|\bm{A}| = |\bm{B}| \implies 4x-8 = -2y$，解得 $x=3, y=-2$。
+$\bm{A}$ 与 $\bm{B}$ 均相似于 $\bm{\Lambda} = \begin{bNiceMatrix} 2 & 0 & 0 \\ 0 & -1 & 0 \\ 0 & 0 & -2 \end{bNiceMatrix}$。
+计算特征向量（ $\bm{A}\bm{P}_1 = \bm{P}_1\bm{\Lambda}, \bm{B}\bm{P}_2 = \bm{P}_2\bm{\Lambda}$）：\\
+对 $\bm{A}$：
+\begin{enumerate}
+    \item 当 $\lambda_1=2$ 时，解 $(2\bm{E}-\bm{A})\bm{x}=\bm{0}$.
+    \[
+    2\bm{E}-\bm{A} = \begin{bNiceMatrix} 4 & 2 & -1 \\ -2 & -1 & 2 \\ 0 & 0 & 0 \end{bNiceMatrix} \xrightarrow{\text{化简}} \begin{bNiceMatrix} 2 & 1 & 0 \\ 0 & 0 & 1 \\ 0 & 0 & 0 \end{bNiceMatrix}
+    \]
+    取对应特征向量 $\bm{\xi}_1=(1, -2, 0)^T$.
+    \item 当 $\lambda_2=-1$ 时，解 $(-\bm{E}-\bm{A})\bm{x}=\bm{0}$.
+    \[
+    -\bm{E}-\bm{A} = \begin{bNiceMatrix} 1 & 2 & -1 \\ -2 & -4 & 2 \\ 0 & 0 & 1 \end{bNiceMatrix} \xrightarrow{\text{化简}} \begin{bNiceMatrix} 1 & 2 & 0 \\ 0 & 0 & 1 \\ 0 & 0 & 0 \end{bNiceMatrix}
+    \]
+    取对应特征向量 $\bm{\xi}_2=(-2, 1, 0)^T$.
+    \item 当 $\lambda_3=-2$ 时，解 $(-2\bm{E}-\bm{A})\bm{x}=\bm{0}$.
+    \[
+    -2\bm{E}-\bm{A} = \begin{bNiceMatrix} 0 & 2 & -1 \\ -2 & -5 & 2 \\ 0 & 0 & 0 \end{bNiceMatrix} \xrightarrow{\text{化简}} \begin{bNiceMatrix} 4 & 0 & 1 \\ 0 & 2 & -1 \\ 0 & 0 & 0 \end{bNiceMatrix}
+    \]
+    取对应特征向量 $\bm{\xi}_3=(-1, 2, 4)^T$.
+\end{enumerate}
+从而 $\bm{P}_1 = \begin{bNiceMatrix} 1 & -2 & -1 \\ -2 & 1 & 2 \\ 0 & 0 & 4 \end{bNiceMatrix}$。\\
+对 $\bm{B}$：
+\begin{enumerate}
+    \item 当 $\lambda_1=2$ 时，解$(2\bm{E}-\bm{B})\bm{x}=\bm{0} $
+    \[ \begin{bNiceMatrix} 0 & -1 & 0 \\ 0 & 3 & 0 \\ 0 & 0 & 4 \end{bNiceMatrix} \bm{x}=\bm{0}\]
+     取对应特征向量 $\bm{\eta}_1=(1, 0, 0)^T$.
+    \item 当 $\lambda_2=-1$ 时，解$(-\bm{E}-\bm{B})\bm{x}=\bm{0} $\[ \begin{bNiceMatrix} -3 & -1 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 1 \end{bNiceMatrix} \bm{x}=\bm{0}\] 
+    取对应特征向量 $\bm{\eta}_2=(1, -3, 0)^T$.
+    \item  当 $\lambda_3=-2$ 时，解$(-2\bm{E}-\bm{B})\bm{x}=\bm{0}$ \[\begin{bNiceMatrix} -4 & -1 & 0 \\ 0 & -1 & 0 \\ 0 & 0 & 0 \end{bNiceMatrix} \bm{x}=\bm{0}\] 
+    取对应特征向量 $\bm{\eta}_3=(0, 0, 1)^T$.
+\end{enumerate}
+从而 $\bm{P}_2 = \begin{bNiceMatrix} 1 & 1 & 0 \\ 0 & -3 & 0 \\ 0 & 0 & 1 \end{bNiceMatrix}$。
+$\bm{P} = \bm{P}_1 \bm{P}_2^{-1} = \begin{bNiceMatrix} 1 & 1 & -1 \\ -2 & -1 & 2 \\ 0 & 0 & 4 \end{bNiceMatrix}$。
+\end{solution}
+\begin{exercise}
+    对于矩阵$\bm{A}_{3 \times 3}$，已知$\bm{\alpha}_1, \bm{\alpha}_2, \bm{\alpha}_3$线性无关，且满足$\bm{A\alpha}_1=\bm{\alpha}_1+\bm{\alpha}_2+\bm{\alpha}_3,\,\bm{A\alpha}_2=2\bm{\alpha}_2+\bm{\alpha}_3,\,\bm{A\alpha}_3=2\bm{\alpha}_2+3\bm{\alpha}_3$，求可逆矩阵$\bm{P}$，使得$\bm{P}^{-1}\bm{AP}$为对角矩阵
+\end{exercise}
+\begin{solution}
+设 $\bm{Q}=(\bm{\alpha}_1, \bm{\alpha}_2, \bm{\alpha}_3)$，则 $\bm{A}\bm{Q} = \bm{Q} \bm{C} = \bm{Q} \begin{bNiceMatrix} 1 & 0 & 0 \\ 1 & 2 & 2 \\ 1 & 1 & 3 \end{bNiceMatrix}$。
+$\bm{C}$ 的特征值为 $|\lambda\bm{E}-\bm{C}|= (\lambda-1)(\lambda-1)(\lambda-4)$，即 $1, 1, 4$。
+\begin{enumerate}
+    \item 当 $\lambda=1$ 时，解 $(\bm{E}-\bm{C})\bm{x}=\bm{0}$.
+    \[
+    \bm{E}-\bm{C} = \begin{bNiceMatrix} 0 & 0 & 0 \\ -1 & -1 & -2 \\ -1 & -1 & -2 \end{bNiceMatrix} \xrightarrow{\text{化简}} \begin{bNiceMatrix} 1 & 1 & 2 \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{bNiceMatrix}
+    \]
+    取对应特征向量 $\bm{\gamma}_1=(1, -1, 0)^T, \bm{\gamma}_2=(2, 0, -1)^T$.
+    \item 当 $\lambda=4$ 时，解 $(4\bm{E}-\bm{C})\bm{x}=\bm{0}$.
+    \[
+    4\bm{E}-\bm{C} = \begin{bNiceMatrix} 3 & 0 & 0 \\ -1 & 2 & -2 \\ -1 & -1 & 1 \end{bNiceMatrix} \xrightarrow{\text{化简}} \begin{bNiceMatrix} 1 & 0 & 0 \\ 0 & 1 & -1 \\ 0 & 0 & 0 \end{bNiceMatrix}
+    \]
+    取对应特征向量 $\bm{\gamma}_3=(0, 1, 1)^T$.
+\end{enumerate}
+令特征向量矩阵 $\bm{R} = (\bm{\gamma}_1, \bm{\gamma}_2, \bm{\gamma}_3) = \begin{bNiceMatrix} 1 & 2 & 0 \\ -1 & 0 & 1 \\ 0 & -1 & 1 \end{bNiceMatrix}$，使得 $\bm{R}^{-1}\bm{C}\bm{R} = \bm{\Lambda}$。
+则 $\bm{P} = \bm{Q}\bm{R} = (\bm{\alpha}_1 - \bm{\alpha}_2, 2\bm{\alpha}_1 - \bm{\alpha}_3, \bm{\alpha}_2 + \bm{\alpha}_3)$。
+\end{solution}
+\ifx\allfiles\undefined
+\end{document}
+\fi

@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"editor.cursorSmoothCaretAnimation": "explicit",
+		"extensions.experimental.ignoredExtensions": [
+		"hancel.markdown-image",
+		"shd101wyy.markdown-preview-enhanced",
+		"yzane.markdown-pdf",
+		"yzhang.markdown-all-in-one",
+		"be5invis.vscode-custom-css"
+  ]
+	}
+}

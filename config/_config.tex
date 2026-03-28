@@ -1,0 +1,27 @@
+\input{\path/package.tex}
+
+% 定理环境设置
+\input{\path/theorem1_zh.tex}
+
+\input{\path/custom.tex}
+
+% 修改参数改变封面样式，0 默认原始封面、内置其他1、2、3种封面样式
+\def\myIndex{3}
+
+
+\ifnum\myIndex>0
+    \input{\path/cover_package_\myIndex} 
+\fi
+
+\def\myTitle{线性代数笔记}
+\def\myAuthor{M.K.}
+\def\myDateCover{\today}
+\def\myDateForeword{\today}
+\def\myForeword{前言}
+\def\myForewordText{
+    
+    这是一个基于\LaTeX{}模板的线代笔记。
+
+}
+\def\mySubheading{副标题}
+

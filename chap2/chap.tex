@@ -1,0 +1,622 @@
+\ifx\allfiles\undefined
+\documentclass[12pt, a4paper, oneside, UTF8]{ctexbook}
+\def\path{../config}
+\input{../config/_config}
+\begin{document}
+% \input{../config/cover}
+\else
+\fi
+\chapter{矩阵}
+\section{部分矩阵相关公式合集}
+\subsection{转置矩阵}
+\begin{theorem}
+    设$\bm{A}, \bm{B}$为同型矩阵，$k$为数，则有如下转置矩阵的性质：
+    \[
+        \begin{array}{l@{\quad}l@{\quad}l@{\quad}l}
+        (\bm{A}^T)^{T} = \bm{A} &(\bm{A} + \bm{B})^T = \bm{A}^T + \bm{B}^T & (k\bm{A})^T = k\bm{A}^T &(\bm{A}\bm{B})^T = \bm{B}^T \bm{A}^T\\
+        |\bm{A}^T| = |\bm{A}| 
+        \end{array}
+    \]
+\end{theorem}
+\subsection{伴随矩阵}
+\begin{theorem}
+    设$\bm{A}, \bm{B}$为同型矩阵，$k$为数，则有如下伴随矩阵的性质：
+    \[
+        \begin{array}{l@{\quad}l@{\quad}l@{\quad}l}
+            \bm{A}\bm{A}^* = \bm{A}^* \bm{A} = |\bm{A}|\bm{E} & |\bm{A}^*| = |\bm{A}|^{n-1} & (k\bm{A})^* = k^{n-1}\bm{A}^* \\
+            (\bm{A}^T)^* = (\bm{A}^*)^T &  (\bm{A}^*)^{-1} = (\bm{A}^{-1})^* = \dfrac{\bm{A}}{|\bm{A}|} &(\bm{A}^*)^* = |\bm{A}|^{n-2}\bm{A}\\
+            (\bm{A}\bm{B})^* = \bm{B}^* \bm{A}^* &(\bm{A}+\bm{B})^* \neq \bm{A}^* + \bm{B}^* & \rank(\bm{A}^*) = \begin{cases}
+                n, & \rank(\bm{A}) = n\\
+                1, & \rank(\bm{A}) = n-1\\
+                0, & \rank(\bm{A}) < n-1
+        \end{cases}
+        \end{array}
+    \]
+\end{theorem}
+\subsection{逆矩阵}
+\begin{theorem}
+    设$\bm{A}, \bm{B}$为同型矩阵，$k$为数，则有如下逆矩阵的性质：
+    \[
+        \begin{array}{l@{\quad}l@{\quad}l@{\quad}l}
+            \bm{A}\text{可逆} \iff |\bm{A}| \neq 0 & (\bm{A}^{-1})^{-1} = \bm{A} & (k\bm{A})^{-1} = \dfrac{1}{k}\bm{A}^{-1},k \neq 0 \\
+             (\bm{A}\bm{B})^{-1} = \bm{B}^{-1}\bm{A}^{-1} & (\bm{A}^T)^{-1} = (\bm{A}^{-1})^T & |\bm{A}^{-1}| = \dfrac{1}{|\bm{A}|} \\
+             (\bm{A} + \bm{B})^{-1} \neq \bm{A}^{-1} + \bm{B}^{-1} & \bm{A}^{-1} = \dfrac{1}{|\bm{A}|}\bm{A}^* 
+        \end{array}
+    \]
+\end{theorem}
+\begin{theorem}
+    初等行变换求逆矩阵：设$\bm{A}$为$n$阶可逆矩阵，$\bm{E}$为$n$阶单位矩阵，将$\bm{A}$与$\bm{E}$并排写成一个增广矩阵，通过对$\bm{A}$进行初等行变换将其化为单位矩阵，同时对$\bm{E}$进行同样的初等行变换，则变换后的$\bm{E}$即为$\bm{A}$的逆矩阵，即
+    \[
+        (\bm{A}|\bm{E}) \xrightarrow{\text{初等行变换}} (\bm{E}|\bm{A}^{-1})
+    \]
+    初等列变换求逆矩阵同理有
+    \[
+        \begin{bNiceMatrix}
+            \bm{A}\\
+            \bm{E}
+        \end{bNiceMatrix} \xrightarrow{\text{初等列变换}} 
+        \begin{bNiceMatrix}
+            \bm{E}\\
+            \bm{A}^{-1}
+        \end{bNiceMatrix}
+    \]
+\end{theorem}
+\subsection{分块矩阵}
+\begin{theorem}
+    设$\bm{A}, \bm{B}, \bm{C}, \bm{D}, \bm{A}_i$可组成一个分块矩阵，$k$为数，则有如下分块矩阵的性质：
+    \[
+        \begin{array}{l@{\qquad}l}
+            \begin{bNiceMatrix}
+                \bm{A} & \bm{B}\\
+                \bm{C} & \bm{D}
+            \end{bNiceMatrix}\cdot
+            \begin{bNiceMatrix}
+                \bm{X} & \bm{Y}\\
+                \bm{Z} & \bm{W}
+            \end{bNiceMatrix} =
+            \begin{bNiceMatrix}
+                \bm{A}\bm{X} + \bm{B}\bm{Z} & \bm{A}\bm{Y} + \bm{B}\bm{W}\\
+                \bm{C}\bm{X} + \bm{D}\bm{Z} & \bm{C}\bm{Y} + \bm{D}\bm{W}
+            \end{bNiceMatrix} &
+            \begin{bNiceMatrix}
+                \bm{A} & \bm{B}\\
+                \bm{C} & \bm{D}
+            \end{bNiceMatrix}^T =
+            \begin{bNiceMatrix}
+                \bm{A}^T & \bm{C}^T\\
+                \bm{B}^T & \bm{D}^T
+            \end{bNiceMatrix} 
+        \end{array}
+    \]
+    \\
+    \[
+            \begin{bNiceMatrix}[columns-width = 1.8em]
+                \bm{A}_1 &&&\\
+                &\bm{A}_2 &&\\
+                &&\ddots &\\
+                &&&\bm{A}_n
+            \end{bNiceMatrix}^{k} =
+            \begin{bNiceMatrix}[columns-width = 1.8em]
+                \bm{A}_1^{k} &&&\\
+                &\bm{A}_2^{k} &&\\
+                &&\ddots &\\
+                &&&\bm{A}_n^{k}
+            \end{bNiceMatrix} 
+    \]
+\\
+    \[
+            \begin{bNiceMatrix}[columns-width = 1.8em]
+                \bm{A}_1 &&&\\
+                &\bm{A}_2 &&\\
+                &&\ddots &\\
+                &&&\bm{A}_n
+            \end{bNiceMatrix}^{-1} =
+            \begin{bNiceMatrix}[columns-width = 1.8em]
+                \bm{A}_1^{-1} &&&\\
+                &\bm{A}_2^{-1} &&\\
+                &&\ddots &\\
+                &&&\bm{A}_n^{-1}
+            \end{bNiceMatrix} 
+    \]
+\\
+    \[
+            \begin{bNiceMatrix}[columns-width = 1.8em]
+                &&&\bm{A}_1\\
+                &&\bm{A}_2 &\\
+                &\iddots &&\\
+                \bm{A}_n &&&
+            \end{bNiceMatrix}^{-1} =
+            \begin{bNiceMatrix}[columns-width = 1.8em]
+                &&&\bm{A}_n^{-1}\\
+                &&\bm{A}_{n-1}^{-1} &\\
+                &\iddots &&\\
+                \bm{A}_1^{-1} &&&
+            \end{bNiceMatrix}
+    \]
+    \\
+    \[
+    \begin{array}{l@{\qquad}l}
+    \begin{bNiceMatrix}
+        \bm{A} & \bm{C}\\
+        \bm{0} & \bm{B}
+    \end{bNiceMatrix}^{-1} =
+    \begin{bNiceMatrix}
+        \bm{A}^{-1} & -\bm{A}^{-1}\bm{C}\bm{B}^{-1}\\
+        \bm{0} & \bm{B}^{-1}
+    \end{bNiceMatrix} &
+    \begin{bNiceMatrix}
+        \bm{A} & \bm{0}\\
+        \bm{C} & \bm{B}
+    \end{bNiceMatrix}^{-1} =
+    \begin{bNiceMatrix}
+        \bm{A}^{-1} & \bm{0}\\
+        -\bm{B}^{-1}\bm{C}\bm{A}^{-1} & \bm{B}^{-1}
+    \end{bNiceMatrix}\\\\
+    \begin{bNiceMatrix}
+        \bm{0} & \bm{A}\\
+        \bm{B} & \bm{C}
+    \end{bNiceMatrix}^{-1} =
+    \begin{bNiceMatrix}
+        -\bm{B}^{-1}\bm{C}\bm{A}^{-1} & \bm{B}^{-1}\\
+        \bm{A}^{-1} & \bm{0}
+    \end{bNiceMatrix} &
+    \begin{bNiceMatrix}
+        \bm{C} & \bm{A}\\
+        \bm{B} & \bm{0}
+    \end{bNiceMatrix}^{-1} =
+    \begin{bNiceMatrix}
+        \bm{0} & \bm{B}^{-1}\\
+        \bm{A}^{-1} & -\bm{A}^{-1}\bm{C}\bm{B}^{-1}
+    \end{bNiceMatrix}
+\end{array}
+\]
+    \begin{myRemark}
+        速记方法：左乘同行，右乘同列，取负号。
+    \end{myRemark}
+\end{theorem}
+\newpage
+\section{抽象矩阵的逆}
+\begin{example}
+    设$n$阶矩阵$\bm{A}$满足$\bm{A}^2 + 4\bm{A} - 5\bm{E} = \bm{0}$，求:
+    \begin{enumerate}[label = (\arabic*)]
+        \item $\bm{A}^{-1}$
+        \item $(\bm{A}+4\bm{E})^{-1}$
+        \item $(\bm{A}+\bm{E})^{-1}$
+    \end{enumerate}
+\end{example}
+\begin{solution}
+    \begin{enumerate}[label = (\arabic*)]
+        \item $\bm{A}^2 + 4\bm{A} = 5\bm{E} \Rightarrow \bm{A}(\bm{A} + 4\bm{E}) = 5\bm{E} \Rightarrow \bm{A}^{-1} = \dfrac{\bm{A} + 4\bm{E}}{5}$
+        \item $(\bm{A}+4\bm{E})^{-1} = \dfrac{\bm{A}}{5}$
+        \item $(\bm{A}+\bm{E})(\bm{A}+3\bm{E}) = 8\bm{E} \Rightarrow (\bm{A}+\bm{E})^{-1} = \dfrac{\bm{A}+3\bm{E}}{8}$
+    \end{enumerate}
+\end{solution}
+\begin{example}
+    $\bm{A}=\begin{bNiceMatrix}[columns-width = 1.5em]
+        1 & 0 & 0 & 0\\
+        -2 & 3 & 0 & 0\\
+        0 & -4 & 5 & 0\\
+        0 & 0 & -6 & 7
+    \end{bNiceMatrix}$，且$\bm{B}=(\bm{E}+\bm{A})^{-1}(\bm{E}-\bm{A})$，求$(\bm{E}+\bm{B})^{-1}$
+\end{example}
+\begin{solution}
+    由题意得
+    \[
+        \bm{E} + \bm{B} = (\bm{E}+\bm{A})^{-1}(\bm{E}-\bm{A}) + \bm{E} = (\bm{E}+\bm{A})^{-1}(\bm{E}-\bm{A} + \bm{E} + \bm{A}) = 2(\bm{E}+\bm{A})^{-1}
+    \]
+    故
+    \[
+        (\bm{E}+\bm{B})^{-1} = \dfrac{1}{2}(\bm{E}+\bm{A}) =
+        \begin{bNiceMatrix}[columns-width = 1.5em]
+            1 & 0 & 0 & 0\\
+            -1 & 2 & 0 & 0\\
+            0 & -2 & 3 & 0\\
+            0 & 0 & -3 & 4
+        \end{bNiceMatrix}
+    \]
+\end{solution}
+\begin{example}
+    已知$\bm{A}$与$\bm{E}-\bm{A}$均可逆，且$[\bm{E}-(\bm{E}-\bm{A})^{-1}]\bm{B}=\bm{A}$，求$\bm{B}-\bm{A}$
+\end{example}
+\begin{solution}
+    法一：由题意得
+    \[
+        [\bm{E}-(\bm{E}-\bm{A})^{-1}]\bm{B}=[(\bm{E}-\bm{A})^{-1}(\bm{E}-\bm{A}) - (\bm{E}-\bm{A})^{-1}]\bm{B} = -(\bm{E}-\bm{A})^{-1}\bm{A}\bm{B} = \bm{A}
+    \]
+    故
+    \[
+        \bm{B} = -(\bm{E}-\bm{A})\bm{A}^{-1}\bm{A} = -(\bm{E}-\bm{A}) = \bm{A} - \bm{E}
+    \]
+    因此$\bm{B} - \bm{A} = -\bm{E}$\\
+    法二（小题）：取$\bm{A} = (a) = a, E = 1, B = b$，则由题意得
+    \[
+        \left(1 - \dfrac{1}{1 - a}\right)b = a \Rightarrow b = \dfrac{a(1 - a)}{-a} = a - 1
+    \]
+    因此$b - a = -1$，即$\bm{B} - \bm{A} = -\bm{E}$
+\end{solution}
+\begin{example}
+    已知$n$阶矩阵$\bm{A}=\begin{bNiceMatrix}[columns-width = 1.5em]
+        0 & 1 & 0 & \cdots & 0\\
+        0 & 0 & \dfrac{1}{2} & \cdots & 0\\
+        \vdots & \vdots & \vdots & \ddots & \vdots\\
+        0 & 0 & 0 & \cdots & \dfrac{1}{n-1}\\
+        \dfrac{1}{n} & 0 & 0 & \cdots & 0
+    \end{bNiceMatrix}$，求$\bm{A}$的全部代数余子式之和$\displaystyle\sum_{i=1}^{n}\sum_{j=1}^{n}A_{ij}$
+\end{example}
+\begin{solution}
+    记$\bm{B} = \begin{bNiceMatrix}[columns-width = 1.5em]
+        1 &&&\\
+        &\dfrac{1}{2} &&\\
+        &&\ddots &\\
+        &&&\dfrac{1}{n-1}
+    \end{bNiceMatrix}$
+    ，则$\bm{A} = \begin{bNiceMatrix}
+        \bm{0} & \bm{B}\\
+        \dfrac{1}{n} & \bm{0}
+    \end{bNiceMatrix}$
+    ，于是
+    \[
+        \bm{A}^*=|\bm{A}|\bm{A}^{-1}=(-1)^{n+1}\cdot\dfrac{1}{n}\cdot\dfrac{1}{(n-1)!}\begin{bNiceMatrix}
+        \bm{0} & n\\
+        \bm{B}^{-1} & \bm{0}
+        \end{bNiceMatrix}
+    \]
+    记$\bm{1}_{n} = (1,1,\cdots,1)^T$，则
+    \[
+        \sum_{i=1}^{n}\sum_{j=1}^{n}A_{ij} = \bm{1}_{n}^T\bm{A}^*\bm{1}_{n} = (-1)^{n+1}\cdot\dfrac{1}{n}\cdot\dfrac{1}{(n-1)!}\bm{1}_{n}^T
+        \begin{bNiceMatrix}
+            \bm{0} & n\\
+            \bm{B}^{-1} & \bm{0}
+        \end{bNiceMatrix}
+        \bm{1}_{n}
+    \]
+    又$\bm{B}^{-1} = \begin{bNiceMatrix}[columns-width = 1.5em]
+        1 &&&\\
+        &2 &&\\
+        &&\ddots &\\
+        &&&n-1
+    \end{bNiceMatrix}$，故
+    \[
+        \bm{1}_{n}^T\begin{bNiceMatrix}
+            \bm{0} & n\\
+            \bm{B}^{-1} & \bm{0}
+        \end{bNiceMatrix}
+        \bm{1}_{n} = 1 + 2 + \cdots + n = \dfrac{n(n+1)}{2}
+    \]
+    因此
+    \[
+        \sum_{i=1}^{n}\sum_{j=1}^{n}A_{ij} = (-1)^{n+1}\cdot\dfrac{1}{n}\cdot\dfrac{1}{(n-1)!} \cdot \dfrac{n(n+1)}{2} = (-1)^{n+1}\cdot\dfrac{n+1}{2(n-1)!}
+    \]
+\end{solution}
+\section{初等矩阵}
+\begin{definition}
+    通过对单位矩阵进行一次初等行（列）变换所得到的矩阵称为\textbf{初等矩阵}。\\
+    初等矩阵可分为三类：
+    \begin{enumerate}[label = (\arabic*)]
+        \item 交换第$i$行（列）和第$j$行（列）的初等矩阵，记为$\bm{E}_{ij}$
+        \item 将第$i$行（列）乘以非零常数$k$的初等矩阵，记为$\bm{E}_{i}(k)$
+        \item 将第$i$行的$k$倍加到第$j$行（将第$j$列的$k$倍加到第$i$列）的初等矩阵，记为$\bm{E}_{ij}(k)$
+    \end{enumerate}
+    注意：初等行（列）变换对应的初等矩阵作用在矩阵的左（右）侧。
+\end{definition}
+\begin{theorem}
+    设$\bm{E}$为初等矩阵，则有如下性质：
+    \[
+        \begin{array}{l@{\qquad\qquad}l@{\qquad\qquad}l}
+            |\bm{E}_{ij}| = -1 & |\bm{E}_{i}(k)| = k & |\bm{E}_{ij}(k)| = 1 \\
+             \bm{E}_{ij}^{-1} = \bm{E}_{ij} & \bm{E}_{i}^{-1}(k) = \bm{E}_{i}(\dfrac{1}{k}) &\bm{E}_{ij}^{-1}(k) = \bm{E}_{ij}(-k)
+        \end{array}
+    \]
+\end{theorem}
+\begin{example}
+    已知$\bm{A}_{3\times 3}$可逆，交换$\bm{A}$的1、2列后得到$\bm{B}$，则$\bm{B}^*$可由（　　）互换得到
+    \begin{tasks}[style = itemize,label = \Alph*.](4)
+        \task $\bm{A}^*$的1、2列
+        \task $\bm{A}^*$的1、2行
+        \task $-\bm{A}^*$的1、2列
+        \task $-\bm{A}^*$的1、2行
+    \end{tasks}
+\end{example}
+\begin{solution}
+    $\bm{B} = \bm{A}\bm{E}_{12} \Rightarrow \bm{B}^* = \bm{E}_{12}^*\cdot \bm{A}^* = |\bm{E}_{12}|\bm{E}_{12}^{-1}\bm{A}^* = \bm{E}_{12}(-\bm{A}^*)$
+\end{solution}
+\begin{example}
+    已知$\bm{A},\bm{P},\bm{Q}$均为三阶方阵，且$\bm{P}$可逆，$\bm{P}^{-1}\bm{A}\bm{P} = \begin{bNiceMatrix}[columns-width = 1.5em]
+        1 & 0 & 0\\
+        0 & 1 & 0\\
+        0 & 0 & 2
+    \end{bNiceMatrix}
+    $，若$\bm{P}=(\bm{\alpha}_1, \bm{\alpha}_2, \bm{\alpha}_3),\bm{Q}=(\bm{\alpha}_1+\bm{\alpha}_2, \bm{\alpha}_2, \bm{\alpha}_3)$
+    ，求$\bm{Q}^{-1}\bm{A}\bm{Q}$
+\end{example}
+\begin{solution}
+    由题意得
+    \[
+        \bm{Q} = \bm{P}\bm{E}_{12}(1)
+    \]
+    故
+    \[
+        \bm{Q}^{-1}\bm{A}\bm{Q} = \bm{E}_{12}^{-1}(1)\cdot\bm{P}^{-1}\bm{A}\bm{P}\cdot\bm{E}_{12}(1) = \bm{E}_{12}(-1)\cdot
+        \begin{bNiceMatrix}[columns-width = 1.5em]
+            1 & 0 & 0\\
+            0 & 1 & 0\\
+            0 & 0 & 2
+        \end{bNiceMatrix}
+        \cdot\bm{E}_{12}(1)
+    \]
+    计算可得
+    \[
+        \bm{Q}^{-1}\bm{A}\bm{Q} =
+        \begin{bNiceMatrix}[columns-width = 1.5em]
+            1 & 0 & 0\\
+            0 & 1 & 0\\
+            0 & 0 & 2
+        \end{bNiceMatrix}
+    \]
+\end{solution}
+\begin{example}
+    对于$\bm{A}_{3 \times 3}$，交换$\bm{A}$的2、3行，再将其第2列的$-1$倍加到第1列后得到$\begin{bNiceMatrix}
+        -2 & 1 & 1\\
+        1 & -1 & 0\\
+        1 & 0 & 0
+    \end{bNiceMatrix}$，求$\operatorname{tr}(\bm{A}^{-1})$
+\end{example}
+\begin{solution}
+    由题意得
+    \[
+        \begin{bNiceMatrix}
+            -2 & 1 & 1\\
+            1 & -1 & 0\\
+            1 & 0 & 0
+        \end{bNiceMatrix} = \bm{E}_{23} \cdot \bm{A} \cdot \bm{E}_{12}(-1)
+    \]
+    故
+    \[
+        \bm{A}^{-1} = \bm{E}_{12}(-1) \cdot 
+        \begin{bNiceMatrix}
+            -2 & 1 & 1\\
+            1 & -1 & 0\\
+            1 & 0 & 0
+        \end{bNiceMatrix}^{-1} \cdot \bm{E}_{23}
+    \]
+    计算可得
+    \[
+        \bm{A}^{-1} =
+        \begin{bNiceMatrix}
+            0 & -1 & 0\\
+            0 & 0 & -1\\
+            -1 & 1 & -1
+        \end{bNiceMatrix}
+    \]
+    因此$\operatorname{tr}(\bm{A}^{-1}) = -1$
+\end{solution}
+\section{矩阵的秩}
+\begin{definition}
+    对于任意矩阵$\bm{A}_{m \times n}$，删去某些行和列后得到的矩阵称为$\bm{A}$的一个\textbf{子矩阵}。\\
+    并称$\bm{A}$的子方阵的行列式为$\bm{A}$的一个\textbf{子式}。\\
+\end{definition}
+\begin{definition}
+    矩阵$\bm{A}$的所有\textcolor{Burgundy}{非零}子式中，子式的最高阶数称为矩阵$\bm{A}$的\textbf{秩}，记为$\rank(\bm{A})$。\\
+    特别地，零矩阵的秩定义为0。
+\end{definition}
+\begin{theorem}
+    设$\bm{A}, \bm{B}$为同型矩阵，$k$为数，则有如下矩阵秩的不等式。\footnotemark
+    \[
+            0 \leq \rank(\bm{A}_{m \times n}) \leq \min\{m,n\}
+    \]
+    \[
+            \rank(\bm{A}\bm{B}) \leq \begin{cases}
+                \rank(\bm{A})\\
+                \rank(\bm{B})
+            \end{cases} \leq \begin{cases}
+                \rank(\bm{A}|\bm{B})\\
+                \rank\left(\dfrac{\bm{A}}{\bm{B}}\right)
+            \end{cases} \leq \rank(\bm{A}) + \rank(\bm{B})
+    \]
+\end{theorem}\footnotetext{这里的大括号意味括号内的多个数左侧不等式中取最小值，在右侧取最大值}
+\begin{theorem}
+    对于任意矩阵$\bm{A}$，有$\rank(\bm{A}) = \rank(\bm{A}^T)=\rank(\bm{A}^T\bm{A})=
+    \rank(\bm{A}\bm{A}^T)$
+\end{theorem}
+\begin{proof}
+    $\forall \bm{\xi} \in N(\bm{A})$，则$\bm{A}\bm{\xi} = \bm{0} \Rightarrow \bm{A}^T\bm{A}\bm{\xi} = \bm{0} \Rightarrow \bm{\xi} \in N(\bm{A}^T\bm{A})$，即$N(\bm{A}) \subseteq N(\bm{A}^T\bm{A})$\\
+    $\forall \bm{\eta} \in N(\bm{A}^T\bm{A})$，则$\bm{A}^T\bm{A}\bm{\eta} = \bm{0} \Rightarrow \bm{\eta}^T\bm{A}^T\bm{A}\bm{\eta} = (\bm{A}\bm{\eta})^T(\bm{A}\bm{\eta}) = 0 \Rightarrow \bm{A}\bm{\eta} = \bm{0} \Rightarrow \bm{\eta} \in N(\bm{A})$，即$N(\bm{A}^T\bm{A}) \subseteq N(\bm{A})$\\
+    因此$N(\bm{A}) = N(\bm{A}^T\bm{A})$，由秩-零化度定理得
+    \[
+        \rank(\bm{A}) = n - \dim N(\bm{A}) = n - \dim N(\bm{A}^T\bm{A}) = \rank(\bm{A}^T\bm{A})
+    \]
+    同理可证$\rank(\bm{A}^T) = \rank(\bm{A}\bm{A}^T)$，又由$\rank(\bm{A}) = \rank(\bm{A}^T)$知结论成立。
+\end{proof}
+\begin{theorem}
+    列满秩矩阵左乘矩阵$\bm{A}_{m \times n}$，不改变$\bm{A}$的秩；行满秩矩阵右乘矩阵$\bm{A}$，不改变$\bm{A}$的秩。即
+    \[
+        \rank(\bm{P}\bm{A}) = \rank(\bm{A}), \quad \text{其中}\ \rank(\bm{P}) = m
+    \]
+    \[
+        \rank(\bm{A}\bm{Q}) = \rank(\bm{A}), \quad \text{其中}\ \rank(\bm{Q}) = n
+    \]
+\end{theorem}
+\begin{proof}
+    $\forall \bm{\xi} \in N(\bm{A})\Rightarrow\bm{A}\bm{\xi} = \bm{0}\Rightarrow \bm{P}\bm{A}\bm{\xi} = \bm{0} \Rightarrow \bm{\xi} \in N(\bm{P}\bm{A})$，即$N(\bm{A}) \subseteq N(\bm{P}\bm{A})$\\
+    $\forall \bm{\eta} \in N(\bm{P}\bm{A})\Rightarrow \bm{P}\bm{A}\bm{\eta} = \bm{0} \Rightarrow \bm{A}\bm{\eta} \in N(\bm{P})$，又$\rank(\bm{P}) = m$，故$N(\bm{P}) = \{\bm{0}\}$，即$\bm{A}\bm{\eta} = \bm{0} \Rightarrow \bm{\eta} \in N(\bm{A})$，即$N(\bm{P}\bm{A}) \subseteq N(\bm{A})$\\
+    因此$N(\bm{A}) = N(\bm{P}\bm{A})$，由秩-零化度定理得
+    \[
+        \rank(\bm{A}) = n - \dim N(\bm{A}) = n - \dim N(\bm{P}\bm{A}) = \rank(\bm{P}\bm{A})
+    \]
+    要证明$\rank(\bm{A}\bm{Q}) = \rank(\bm{A})$只需证明$\rank(\bm{Q}^T\bm{A}^T) = \rank(\bm{A}^T)$，而$\bm{Q}^T$是列满秩矩阵，故结论成立。
+\end{proof}
+\begin{corollary}
+    若$\bm{A}\sim\bm{B}$，则$\rank(\bm{A}) = \rank(\bm{B})$\\
+    若$\bm{P}, \bm{Q}$可逆，则$\rank(\bm{P}\bm{A}) = \rank(\bm{A}\bm{Q}) = \rank(\bm{A})$
+\end{corollary}
+\begin{theorem}
+    若$\bm{A}_{m \times n}\bm{B}_{n \times l}=\bm{0}$，则有$\rank(\bm{A}) + \rank(\bm{B}) \leq n$
+\end{theorem}
+\begin{proof}
+    由题意得$C(\bm{B}) \subseteq N(\bm{A})$，故$\dim C(\bm{B}) \leq \dim N(\bm{A})$，即
+    \[
+        \rank(\bm{B}) \leq n - \rank(\bm{A}) \Rightarrow \rank(\bm{A}) + \rank(\bm{B}) \leq n
+    \]
+\end{proof}
+\begin{theorem}
+    Sylvester不等式：设$\bm{A}_{m \times n}, \bm{B}_{n \times l}$，则有
+    \[
+    \rank(\bm{A}\bm{B}) \geq \rank(\bm{A}) + \rank(\bm{B}) - n
+    \]
+\end{theorem}
+\begin{theorem}
+    对于分块矩阵有如下性质：
+    \[
+        \rank\begin{bNiceMatrix}
+            \bm{A} & \bm{0}\\
+            \bm{0} & \bm{B}
+        \end{bNiceMatrix}
+    = \rank(\bm{A}) + \rank(\bm{B})
+    \]
+    \[\rank\begin{bNiceMatrix}
+        \bm{A} & \bm{C}\\
+        \bm{0} & \bm{B}
+    \end{bNiceMatrix}\geq \rank(\bm{A}) + \rank(\bm{B})
+    \]
+\end{theorem}
+\begin{theorem}
+    $$\forall \bm{A}_{n \times n} \in \R^{n \times n}, \quad \rank(\bm{A}^{n+1}) = \rank(\bm{A}^{n})$$
+\end{theorem}
+\begin{example}
+    设$\bm{A}=\begin{bNiceMatrix}
+        a_1\\
+        a_2\\
+        \vdots\\
+        a_n
+    \end{bNiceMatrix}
+    \begin{bNiceMatrix}
+        b_1 & b_2 & \cdots & b_n
+    \end{bNiceMatrix}$，其中$\displaystyle\prod_{i=1}^{n}a_ib_i\neq 0$，求$\rank(\bm{A})$
+\end{example}
+\begin{solution}
+    记$\bm{A}=\bm{\alpha}\bm{\beta}$，则$\rank(\bm{A}) \leq \min\{\rank(\bm{\alpha}), \rank(\bm{\beta})\} = 1$\\
+    又$\bm{A} \neq \bm{0}$，故$\rank(\bm{A}) = 1$
+\end{solution}
+\begin{example}
+    已知$\bm{A}, \bm{B}$为$m\times n$和$n\times m$矩阵，证明：若$m > n$，则$|\bm{AB}| = 0$
+\end{example}
+\begin{proof}
+    由题意得$\rank(\bm{A}) \leq n < m$，故$\rank(\bm{AB}) \leq \rank(\bm{A}) < m$，即$|\bm{AB}| = 0$
+\end{proof}
+\begin{example}
+    设$\bm{A}, \bm{B}$均为$n$阶实矩阵，下列不成立的是（　　）
+    \begin{tasks}[style = itemize,label = \Alph*.](2)
+        \task $\rank\begin{bNiceMatrix}
+            \bm{A} & \bm{0}\\
+            \bm{0} & \bm{A}^T\bm{A}
+        \end{bNiceMatrix}=2~\rank(\bm{A})$
+        \task $\rank\begin{bNiceMatrix}
+            \bm{A} & \bm{AB}\\
+            \bm{0} & \bm{A}^T
+        \end{bNiceMatrix} = 2~\rank(\bm{A})$
+        \task $\rank\begin{bNiceMatrix}
+            \bm{A} & \bm{BA}\\
+            \bm{0} & \bm{A}\bm{A}^T
+        \end{bNiceMatrix}=2~\rank(\bm{A})$
+        \task $\rank\begin{bNiceMatrix}
+            \bm{A} & \bm{0}\\
+            \bm{BA} & \bm{A}^T
+        \end{bNiceMatrix}=2~\rank(\bm{A})$
+    \end{tasks}
+\end{example}
+\begin{solution}
+    选项A：\\
+    \[
+    \rank\begin{bNiceMatrix}
+            \bm{A} & \bm{0}\\
+            \bm{0} & \bm{A}^T\bm{A}
+        \end{bNiceMatrix}=\rank(\bm{A})+\rank(\bm{A}^T\bm{A})=2~\rank(\bm{A})
+    \]
+    选项B：\\
+    \[\begin{bNiceMatrix}
+            \bm{A} & \bm{AB}\\
+            \bm{0} & \bm{A}^T
+        \end{bNiceMatrix}\xrightarrow{\text{将第1列右乘}-\bm{B}\text{后加到第2列}} \begin{bNiceMatrix}
+            \bm{A} & \bm{0}\\
+            \bm{0} & \bm{A}^T
+        \end{bNiceMatrix}\Rightarrow \rank\begin{bNiceMatrix}
+            \bm{A} & \bm{AB}\\
+            \bm{0} & \bm{A}^T
+        \end{bNiceMatrix}=2~\rank(\bm{A})
+    \]
+    选项C：\\
+        由于在进行列变换时只能进行右乘，故无法将$\bm{BA}$化为$\bm{0}$，则C选项不成立。\\
+    选项D：\\
+    \[\begin{bNiceMatrix}
+            \bm{A} & \bm{0}\\
+            \bm{BA} & \bm{A}^T
+        \end{bNiceMatrix}\xrightarrow{\text{将第1行左乘}-\bm{B}\text{后加到第2行}} \begin{bNiceMatrix}
+            \bm{A} & \bm{0}\\
+            \bm{0} & \bm{A}^T
+        \end{bNiceMatrix}\Rightarrow\rank\begin{bNiceMatrix}
+            \bm{A} & \bm{0}\\
+            \bm{BA} & \bm{A}^T
+        \end{bNiceMatrix}=2~\rank(\bm{A})
+    \]
+\end{solution}
+\section{矩阵练习}
+\begin{exercise}
+    设$\bm{A}^*=\begin{bNiceMatrix}
+        1 & 0 & 0 & 0\\
+        0 & 1 & 0 & 0\\
+        1 & 0 & 1 & 0\\
+        0 & -3 & 0 & 8
+    \end{bNiceMatrix}$，且$\bm{ABA}^{-1}=\bm{BA}^{-1}+3\bm{E}$，求$\bm{B}^*$
+\end{exercise}
+\begin{solution}
+    由题意得
+    \[
+        \bm{A}\bm{B} = \bm{B} + 3\bm{A} \Rightarrow (\bm{A}-\bm{E})\bm{B}
+    \]
+    又$|\bm{A}^*|=8=|\bm{A}|^3\Rightarrow|\bm{A}|=2\Rightarrow\bm{A}$可逆$\Rightarrow (\bm{A}-\bm{E})\text{与}\bm{B}$均可逆\\
+    故$\bm{B} = 3(\bm{A}-\bm{E})^{-1}\bm{A}$则
+    \[
+        \bm{B}^* = 3^3\bm{A}^*\left[(\bm{A}-\bm{E})^{-1}\right]^*=27\bm{A}^*\cdot\dfrac{\bm{A}-\bm{E}}{|\bm{A}-\bm{E}|}
+        =27\dfrac{(2\bm{E}-\bm{A}^*)|\bm{A}^*|}{|\bm{A}-\bm{E}|||\bm{A}^*|}=216\dfrac{2\bm{E}-\bm{A}^*}{|2\bm{E}-\bm{A}^*|}
+    \]
+    而
+    \[
+        |2\bm{E}-\bm{A}^*| = \begin{vNiceMatrix}[columns-width = 1.5em]
+            1 & 0 & 0 & 0\\
+            0 & 1 & 0 & 0\\
+            -1 & 0 & 1 & 0\\
+            0 & 3 & 0 & -6
+        \end{vNiceMatrix} = -6
+    \]
+    于是
+    \[
+        \bm{B}^* = \begin{bNiceMatrix}
+            -36 & 0 & 0 & 0\\
+            0 & -36 & 0 & 0\\
+            36 & 0 & -36 & 0\\
+            0 & -108 & 0 & 216
+        \end{bNiceMatrix}
+    \]
+\end{solution}
+\begin{exercise}
+    已知$\bm{A}=\begin{bNiceMatrix}
+        a^n & (a+1)^n & \cdots & (a+n)^n\\
+        a^{n-1} & (a+1)^{n-1} & \cdots & (a+n)^{n-1}\\
+        \vdots & \vdots & & \vdots\\
+        a & a+1 & \cdots & a+n\\
+        1 & 1 & \cdots & 1
+    \end{bNiceMatrix}$，求$\bm{A}^*$的所有元素之和
+\end{exercise}
+\begin{solution}
+    \[
+    \forall i \in [1,n]\cap\mathbb{N},A_{i1}+A_{i2}+\cdots + A_{i,n+1}=0\Rightarrow\displaystyle
+    \sum_{i=1}^{n+1}\sum_{j=1}^{n+1}A_{ij}=|\bm{A}|
+    \]
+    对$\bm{A}$逐行对调$\dfrac{n(n+1)}{2}$次变为范德蒙德行列式，故
+    \[
+        |\bm{A}| = (-1)^{\frac{n(n+1)}{2}}\prod_{0 \leq j < i \leq n}[(a+i)-(a+j)] = (-1)^{\frac{n(n+1)}{2}}\prod_{i=1}^{n}i!
+    \]
+\end{solution}
+\ifx\allfiles\undefined
+\end{document}
+\fi

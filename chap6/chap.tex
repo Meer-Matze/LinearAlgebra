@@ -1,0 +1,215 @@
+\ifx\allfiles\undefined
+\documentclass[12pt, a4paper, oneside, UTF8]{ctexbook}
+\def\path{../config}
+\input{../config/_config}
+\begin{document}
+% \input{../config/cover}
+\else
+\fi
+\chapter{二次型}
+
+\section{二次型矩阵}
+
+\begin{definition}[二次型]
+    对于含有$n$个变量$x_1, x_2, \cdots, x_n$的二次齐次函数
+    \begin{align*}
+        f(x_1, x_2, \cdots, x_n) =& a_{11} x_1^2 + a_{22} x_2^2 + \cdots + a_{nn} x_n^2 \\
+        &+ 2 a_{12} x_1 x_2 + 2 a_{13} x_1 x_3 + \cdots + 2 a_{1n} x_1 x_n\\
+        &+ 2 a_{23} x_2 x_3 + \cdots + 2 a_{2n} x_2 x_n \\
+        &+ \cdots \\
+        &+ 2 a_{n-1,n} x_{n-1} x_n
+    \end{align*}
+    存在一个唯一的对称矩阵$A = (a_{ij})_{n \times n}$，使得
+    \[ f(x_1, x_2, \cdots, x_n) = \bm{x}^T A \bm{x} \]
+    其中$\bm{x} = (x_1, x_2, \cdots, x_n)^T$。称$A$为二次型$f$的对应矩阵。
+    \begin{myRemark}
+        若题目给出的$\bm{A}$不是对称矩阵，则应先将其化为对称矩阵$\frac{\bm{A} + \bm{A}^T}{2}$，再作为对应矩阵。
+    \end{myRemark}
+\end{definition}
+
+\begin{theorem}
+    对于任意给定的二次型，其对应的对称矩阵是唯一的。
+\end{theorem}
+
+\section{二次型的变换}
+
+\subsection{二次型与线性变换}
+
+\begin{definition}[非退化线性变换]
+    若线性变换 $\bm{x} = \bm{C}\bm{y}$ 的系数矩阵 $\bm{C}$ 可逆，则称为非退化线性变换。
+    非退化线性变换把二次型 $f = \bm{x}^T \bm{A} \bm{x}$ 变为 $g = \bm{y}^T (\bm{C}^T \bm{A} \bm{C}) \bm{y}$，矩阵 $\bm{C}^T \bm{A} \bm{C}$ 与 $\bm{A}$ 合同。
+\end{definition}
+
+\begin{definition}[惯性指数]
+    在二次型的标准型中，正系数的个数 $p$ 称为正惯性指数，负系数的个数 $q$ 称为负惯性指数。
+\end{definition}
+
+\begin{definition}[规范型]
+    二次型经非退化线性变换可化为如下形式，称为规范型：
+    \[ f = y_1^2 + \cdots + y_p^2 - y_{p+1}^2 - \cdots - y_{p+q}^2 \]
+    其中 $p$ 为正惯性指数，$q$ 为负惯性指数。
+\end{definition}
+
+\begin{theorem}[惯性定理]
+    实二次型的标准型虽不唯一，但其规范型是唯一的。即正惯性指数 $p$ 和负惯性指数 $q$ 由二次型本身唯一确定。二次型对应的矩阵为$\bm{A}$，则有
+    \[p + q = \rank(\bm{A})\]
+\end{theorem}
+
+\subsection{矩阵合同}
+
+\begin{definition}[合同]
+    设 $\bm{A}, \bm{B}$ 为 $n$ 阶矩阵，若存在可逆矩阵 $\bm{C}$，使得 $\bm{C}^T \bm{A} \bm{C} = \bm{B}$，则称矩阵 $\bm{A}$ 与 $\bm{B}$ 合同，记作 $\bm{A} \simeq \bm{B}$。
+\end{definition}
+
+\begin{theorem}
+    实对称矩阵 $\bm{A}$ 与 $\bm{B}$ 合同的充要条件是它们有相同的正惯性指数 $p$ 和负惯性指数 $q$（即具有相同的惯性指数）。
+\end{theorem}
+
+\begin{theorem}
+    实对称矩阵只能和实对称矩阵合同。\\
+    $\text{\qquad\qquad\qquad\quad}$非实对称只能和非实对称矩阵合同。
+\end{theorem}
+\subsection{配方法}
+
+\begin{enumerate}
+    \item 若二次型含平方项 $x_i^2$（不妨设 $a_{ii} \neq 0$），则选取含 $x_i$ 的所有项进行配方。
+    \item 若二次型不含平方项，但含交叉项 $a_{ij} x_i x_j$，则通过变换
+    \[ \begin{cases} x_i = y_i - y_j \\ x_j = y_i + y_j \end{cases} \]
+    引入平方项，再按第一种情况处理。
+\end{enumerate}
+
+\subsection{初等变换法}
+
+对对称矩阵 $\bm{A}$ 作初等行变换，同时作对应的初等列变换，将其化为对角矩阵。
+\[ \bm{A} \xrightarrow{r_i + k r_j} \bm{A}_1 \xrightarrow{c_i + k c_j} \bm{A}_2 \xrightarrow{\cdots} \bm{\Lambda} \]
+若需求变换矩阵 $\bm{C}$，可构造 $(\bm{A} \mid \bm{E})$，对列作变换的同时作用于 $\bm{E}$，对行作变换时不作用于 $\bm{E}$。最后右侧的 $\bm{E}$ 变为 $\bm{C}$。
+
+\subsection{正交变换法}
+
+利用正交矩阵 $\bm{Q}$ 将 $\bm{A}$ 对角化（$\bm{Q}^T \bm{A} \bm{Q} = \bm{\Lambda}$）：
+\begin{enumerate}
+    \item 求出 $\bm{A}$ 的所有特征值 $\lambda_1, \cdots, \lambda_n$。
+    \item 求出对应特征向量，并进行正交化、单位化。
+    \item 构造正交矩阵 $\bm{Q}$，作变换 $\bm{x} = \bm{Q}\bm{y}$，得到标准型 $f = \lambda_1 y_1^2 + \cdots + \lambda_n y_n^2$。
+\end{enumerate}
+
+\section{正定二次型与正定矩阵}
+
+\begin{definition}[正定性]
+    若对任意非零向量$x \neq 0$，都有$x^T \bm{A} x > 0$，则称二次型$f$为正定二次型，称对称矩阵$\bm{A}$为正定矩阵。
+\end{definition}
+\begin{definition}[顺序主子式]
+    设 $\bm{A} = (a_{ij})_{n \times n}$，子式
+    \[ D_k = \det
+    \begin{pmatrix}
+        a_{11} & \cdots & a_{1k} \\
+        \vdots & \ddots & \vdots \\
+        a_{k1} & \cdots & a_{kk}
+    \end{pmatrix} \]
+    称为矩阵 $\bm{A}$ 的 $k$ 阶顺序主子式 ($k = 1, 2, \cdots, n$)。
+\end{definition}
+\begin{theorem}[正定矩阵的判别]
+    $n$阶实对称矩阵$\bm{A}$正定的充要条件是：
+    \begin{enumerate}
+        \item $\bm{A}$的所有特征值$\lambda_i > 0$。
+        \item $\bm{A}$的正惯性指数$p = n$。
+        \item $\bm{A}$合同于单位矩阵$\bm{E}$。
+        \item $\bm{A}$的所有顺序主子式全大于0。
+    \end{enumerate}
+\end{theorem}
+\section{二次型相关例题}
+\begin{example}
+    设二次型$f(x_1, x_2, x_3) = \displaystyle\sum_{i=1}^{3}\sum_{j=1}^{3}ijx_ix_j$
+    \begin{enumerate}[label=(\arabic*)]
+        \item 利用正交变换$\bm{x}=\bm{Qy}$将$f(x_1, x_2, x_3)$化为标准型；
+        \item 求$f(x_1, x_2, x_3)=0$的解.
+    \end{enumerate}
+\end{example}
+\begin{solution}
+    二次型对应的矩阵为
+    \[ \bm{A} = \begin{pmatrix} 1 & 2 & 3 \\ 2 & 4 & 6 \\ 3 & 6 & 9 \end{pmatrix} = \begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix} \begin{pmatrix} 1 & 2 & 3 \end{pmatrix} \]
+    显然$\rank(\bm{A})=1$，特征值为$\lambda_1=14, \lambda_2=\lambda_3=0$.
+    \begin{enumerate}
+        \item 对应$\lambda_1=14$的特征向量$\bm{\xi}_1 = (1, 2, 3)^T$，单位化得$\bm{\eta}_1 = \frac{1}{\sqrt{14}}(1, 2, 3)^T$.
+
+        对应$\lambda_2=\lambda_3=0$的特征向量需满足$x_1+2x_2+3x_3=0$，取$\bm{\xi}_2 = (2, -1, 0)^T$，$\bm{\xi}_3$需与$\bm{\xi}_1, \bm{\xi}_2$正交，可取$\bm{\xi}_1 \times \bm{\xi}_2 = (3, 6, -5)^T$.
+
+        单位化得$\bm{\eta}_2 = \frac{1}{\sqrt{5}}(2, -1, 0)^T, \bm{\eta}_3 = \frac{1}{\sqrt{70}}(3, 6, -5)^T$.
+
+        令$\bm{Q} = (\bm{\eta}_1, \bm{\eta}_2, \bm{\eta}_3)$，则经$\bm{x}=\bm{Qy}$变换得标准型
+        \[ f = 14y_1^2 \]
+        \item $f=0 \Rightarrow 14y_1^2=0 \Rightarrow y_1=0$.
+
+        由$\bm{y}=\bm{Q}^T\bm{x}$知$\bm{x}=\bm{Qy}=\bm{Q}\begin{pmatrix} 0 \\ y_2 \\ y_3 \end{pmatrix} = y_2 \bm{\eta}_2 + y_3 \bm{\eta}_3$，即
+        \[ \bm{x} = k_1 \begin{pmatrix} 2 \\ -1 \\ 0 \end{pmatrix} + k_2  \begin{pmatrix} 3 \\ 6 \\ -5 \end{pmatrix} \]
+        其中$k_1, k_2$为任意实数.
+    \end{enumerate}
+\end{solution}
+\begin{example}
+    设实二次型$f(x_1, x_2, x_3) = (x_1-x_2+x_3)^2+(x_2+x_3)^2+(x_1+ax_3)^2$，其中$a$为实参数，求：
+    \begin{enumerate}[label=(\arabic*)]
+        \item $f(x_1, x_2, x_3)=0$的解；
+        \item $f(x_1, x_2, x_3)$的规范型；
+        \item $f(x_1, x_2, x_3)$是否为正定二次型.
+    \end{enumerate}
+\end{example}
+\begin{solution}
+    \begin{enumerate}
+        \item 由$f=0$且$f$为平方和形式，得
+        \[ \begin{cases} x_1-x_2+x_3=0 \\ x_2+x_3=0 \\ x_1+ax_3=0 \end{cases} \qquad\qquad
+        \begin{vNiceMatrix}[columns-width = 1.5em]
+            1 & -1 & 1  \\
+            0 & 1 & 1  \\
+            1 & 0 & a 
+            \end{vNiceMatrix} = a-2\]
+        \begin{itemize}
+            \item 当$a \neq 2$时，仅有零解$\bm{x}=\bm{0}$.
+            \item 当$a = 2$时，有非零解$\bm{x} = k(-2, -1, 1)^T \; (k \neq 0)$.
+        \end{itemize}
+        \item 令$\bm{C} = \begin{pmatrix} 1 & -1 & 1 \\ 0 & 1 & 1 \\ 1 & 0 & a \end{pmatrix}$，$\det(\bm{C}) = a-2$.
+        \begin{itemize}
+            \item 当$a \neq 2$时，变换非退化，规范型为$y_1^2 + y_2^2 + y_3^2$.
+            \item 当$a = 2$时，$\rank(\bm{C})=2$，配方法：
+            \begin{align*}
+                f &= (x_1 - x_2 + x_3)^2 + (x_2 + x_3)^2 + (x_1 + 2x_3)^2 \\
+                &= 2(x_1 - \dfrac{1}{2}x_2 + \dfrac{3}{2}x_3)^2 + \dfrac{3}{2}(x_2 + \dfrac{2}{3}x_3)^2
+            \end{align*}
+            规范型为$y_1^2 + y_2^2$.
+        \end{itemize}
+        \item 正定充要条件为正惯性指数$p=3$.
+        由(2)知，当$a \neq 2$时，$p=3$，是正定二次型；当$a=2$时，不是正定二次型.
+    \end{enumerate}
+\end{solution}
+\begin{example}
+    设二次型$f(x_1, x_2) = x_1^2 - 4x_1 x_2 + 4x_2^2$经正交变换$\begin{pNiceMatrix} x_1 \\ x_2 \end{pNiceMatrix} = \bm{Q} \begin{pNiceMatrix} y_1 \\ y_2 \end{pNiceMatrix}$化为一个新的二次型$g(y_1, y_2) = ay_1^2+4y_1y_2+by_2^2$，其中$a \ge b$，求:\begin{enumerate}[label=(\arabic*)]
+        \item 常数$a, b$;
+        \item 一个正交矩阵$\bm{Q}$.
+    \end{enumerate}
+\end{example}
+\begin{solution}
+    \begin{enumerate}
+        \item 二次型$f, g$的矩阵分别为$\bm{A} = \begin{pNiceMatrix} 1 & -2 \\ -2 & 4 \end{pNiceMatrix}$, $\bm{B} = \begin{pNiceMatrix} a & 2 \\ 2 & b \end{pNiceMatrix}$.
+
+        因$f, g$经正交变换相互转化，故$\bm{A}, \bm{B}$相似，有相同的特征值，从而迹与行列式相等：
+        \[ \begin{cases} \operatorname{tr}(\bm{A}) = 1+4 = a+b = \operatorname{tr}(\bm{B}) \\ \det(\bm{A}) = 4-4 = ab-4 = \det(\bm{B}) \end{cases} \Rightarrow \begin{cases} a+b=5 \\ ab=4 \end{cases} \]
+        解得$\begin{cases} a=1 \\ b=4 \end{cases}$或$\begin{cases} a=4 \\ b=1 \end{cases}$，因$a \ge b$，故$a=4, b=1$.
+        \item  $\bm{A} = \begin{pNiceMatrix} 1 & -2 \\ -2 & 4 \end{pNiceMatrix}$的特征值为$\lambda_1=5, \lambda_2=0$.
+
+        对应$\lambda_1=5$，$\bm{\xi}_1 = \frac{1}{\sqrt{5}}(1, -2)^T$；对应$\lambda_2=0$，$\bm{\xi}_2 = \frac{1}{\sqrt{5}}(2, 1)^T$.
+
+        令$\bm{Q}_1 = (\bm{\xi}_1, \bm{\xi}_2) = \frac{1}{\sqrt{5}}\begin{pNiceMatrix} 1 & 2 \\ -2 & 1 \end{pNiceMatrix}$.
+
+        $\bm{B} = \begin{pNiceMatrix} 4 & 2 \\ 2 & 1 \end{pNiceMatrix}$同理可得特征值$\lambda_1=5, \lambda_2=0$.
+
+        对应$\lambda_1=5$，$\bm{\eta}_1 = \frac{1}{\sqrt{5}}(2, 1)^T$；对应$\lambda_2=0$，$\bm{\eta}_2 = \frac{1}{\sqrt{5}}(-1, 2)^T$.
+
+        令$\bm{Q}_2 = (\bm{\eta}_1, \bm{\eta}_2) = \frac{1}{\sqrt{5}}\begin{pNiceMatrix} 2 & -1 \\ 1 & 2 \end{pNiceMatrix}$.
+
+        由$\bm{Q}_1^T \bm{A} \bm{Q}_1 = \bm{\Lambda} = \bm{Q}_2^T \bm{B} \bm{Q}_2$，得$\bm{B} = \bm{Q}_2 \bm{Q}_1^T \bm{A} \bm{Q}_1 \bm{Q}_2^T = (\bm{Q}_1\bm{Q}_2^T)^T \bm{A} (\bm{Q}_1\bm{Q}_2^T)$.
+
+        故取$\bm{Q} = \bm{Q}_1\bm{Q}_2^T = \dfrac{1}{5}\begin{pNiceMatrix} 1 & 2 \\ -2 & 1 \end{pNiceMatrix}\begin{pNiceMatrix} 2 & -1 \\ 1 & 2 \end{pNiceMatrix} = \begin{pNiceMatrix}[cell-space-top-limit=3pt] 0 & 1 \\ -1 & 1 \end{pNiceMatrix}$.
+    \end{enumerate}
+\end{solution}
+\ifx\allfiles\undefined
+\end{document}
+\fi

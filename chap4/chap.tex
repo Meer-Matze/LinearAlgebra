@@ -1,0 +1,102 @@
+\ifx\allfiles\undefined
+\documentclass[12pt, a4paper, oneside, UTF8]{ctexbook}
+\def\path{../config}
+\input{../config/_config}
+\begin{document}
+% \input{../config/cover}
+\else
+\fi
+\chapter{线性方程组}
+\begin{theorem}
+    设$\bm{A}$为$m\times n$矩阵，$\bm{b}\in \mathbb{R}^m$，则线性方程组$\bm{Ax}=\bm{b}$有解的充分必要条件是$\rank(\bm{A}) = \rank(\bm{A}|\bm{b})$。
+\end{theorem}
+\begin{example}
+    设$\bm{A}_{4\times 4}=(\bm{\alpha_1} , \bm{\alpha_2} , \bm{\alpha_3} , \bm{\alpha_4})$，
+    且$\bm{Ax}=\bm{0}$的通解为$k(1 , 0 , -4 , 0)^T$，则下列是$\bm{A}^*\bm{x}=\bm{0}$的基础解系的是（~~~~~~）
+    \begin{tasks}[style = itemize,label = \Alph*.](4)
+    \task $\alpha_1,\alpha_2,\alpha_3$
+    \task $\alpha_1,\alpha_2$
+    \task $\alpha_1,\alpha_2,\alpha_4$
+    \task $\alpha_1,\alpha_3,\alpha_4$
+    \end{tasks}
+\end{example}
+\begin{solution}
+    由通解可知，$\rank(\bm{A}) = 3$，$\bm{A}^*\bm{A}=|\bm{A}|\bm{E}=\bm{0}\Rightarrow\bm{A}^*\bm{\alpha_1}=\bm{A}^*\bm{\alpha_2}=
+    \bm{A}^*\bm{\alpha_3}=\bm{A}^*\bm{\alpha_4}=\bm{0}$，并且$\rank(\bm{A}^*)=1$，故$\bm{A}^*\bm{x}=\bm{0}$的基础解系有3个解向量，
+    又$\bm{\alpha_1}-4\bm{\alpha_3}=\bm{0}\Rightarrow\bm{\alpha_1}\text{与}\bm{\alpha_3}$线性相关，故选C
+\end{solution}
+\begin{example}
+    设$\bm{A}_{4\times 4}=(\bm{\alpha_1} , \bm{\alpha_2} , \bm{\alpha_3} , \bm{\alpha_4})$，
+    且$\bm{Ax}=\bm{\beta}$的通解为$k(1 , -2 , 4 , 0)^T+(1, 2, 2,1)^T$，记$\bm{B}=(\bm{\alpha_3}, \bm{\alpha_2}, \bm{\alpha_1}, 
+    \bm{\beta}-\bm{\alpha_4})$，求$\bm{Bx}=\bm{\alpha_1}-\bm{\alpha_2}$的通解。
+\end{example}
+\begin{solution}
+    由题意得到$\rank(\bm{A})=3$，$\bm{\alpha_1}-2\bm{\alpha_2}+4\bm{\alpha_3}=\bm{0},\bm{\alpha_1}+\bm{\alpha_2}+2\bm{\alpha_3}+\bm{\alpha_4}=\bm{\beta}
+    \Rightarrow (4, -2, 1, 0)^T,(2, 2, 1, -1)^T$是$\bm{Bx}=\bm{0}$的解，且二者线性无关。
+    显然$(0, -1, 1, 0)^T$是$\bm{Bx}=\bm{\alpha_1}-\bm{\alpha_2}$的一个特解，$\rank(\bm{B})=2$，于是可知$\bm{Bx}=\bm{\alpha_1}-\bm{\alpha_2}$的通解为
+    \[
+        \bm{x} = k_1(4, -2, 1, 0)^T + k_2(2, 2, 1, -1)^T + (0, -1, 1, 0)^T
+    \]
+\end{solution}
+\newcounter{inleq}
+\setcounter{inleq}{1}
+\begin{example}
+    已知方程组(\Roman{inleq})
+    $\begin{cases}
+        x_1+2x_2+3x_3=0\\
+        2x_1+3x_2+5x_3=0\\
+        x_1+x_2+ax_3=0
+    \end{cases}$
+\refstepcounter{inleq}
+    与(\Roman{inleq})
+    $\begin{cases}
+        x_1+bx_2+cx_3=0\\
+        2x_1+b^2x_2+(c+1)x_3=0\\
+    \end{cases}$
+    有相同的解集，求$a,b,c$的值。
+\end{example}
+\setcounter{inleq}{1}
+\begin{solution}
+    记方程组(\Roman{inleq})\refstepcounter{inleq}(\Roman{inleq})的系数矩阵分别为$\bm{A},\bm{B}$，则
+    \[\rank(\bm{A})=\rank(\bm{B})
+    =\rank\begin{bNiceMatrix}
+        \bm{A}\\
+        \bm{B}
+    \end{bNiceMatrix}\text{且}\rank(\bm{B})\leq 2\Rightarrow\rank(\bm{A})\leq 2\]
+    故$|\bm{A}|=0\Rightarrow a=2\Rightarrow\rank(\bm{A})=2\Rightarrow\rank(\bm{B})
+    =\rank\begin{bNiceMatrix}
+        \bm{A}\\
+        \bm{B}
+    \end{bNiceMatrix}=2$，于是
+    \[
+        \begin{bNiceMatrix}
+            \bm{A}\\
+            \bm{B}
+        \end{bNiceMatrix}=\begin{bNiceMatrix}
+            1 & 2 & 3\\
+            2 & 3 & 5\\
+            1 & 1 & 2\\
+            1 & b & c\\
+            2 & b^2 & c+1
+        \end{bNiceMatrix}\rightarrow\begin{bNiceMatrix}
+            1 & 2 & 3\\
+            0 & 1 & 1\\
+            0 & 0 & c-b-1\\
+            0 & 0 & -bc-c+3b+1\\
+            0 & 0 & 0
+        \end{bNiceMatrix}\Rightarrow\begin{cases}
+            c-b-1=0\\
+            -bc-c+3b+1=0
+        \end{cases}
+    \]
+    解得$\begin{cases}
+        b=0\\
+        c=1
+    \end{cases}$或$\begin{cases}
+        b=1\\
+        c=2
+    \end{cases}$，经检验，$b=0,c=1$时，$\rank({\bm{B}})=1$，故舍去，最终结果为\[a=2,b=1,c=2\]
+\end{solution}
+\ifx\allfiles\undefined
+\end{document}
+\fi

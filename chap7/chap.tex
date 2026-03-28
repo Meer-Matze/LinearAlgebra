@@ -1,0 +1,110 @@
+\ifx\allfiles\undefined
+\documentclass[12pt, a4paper, oneside, UTF8]{ctexbook}
+\def\path{../config}
+\input{../config/_config}
+\begin{document}
+% \input{../config/cover}
+\else
+\fi
+\chapter{线性代数综合练习}
+\begin{exercise}
+  已知$\bm{A}=\begin{bNiceMatrix}[columns-width = 1.5em]
+    \lambda & 1 & 1 \\
+    1 & \lambda & 1 \\
+    1 & 1 & \lambda
+    \end{bNiceMatrix}$，若$\lambda_1=3$是$\bm{A}$的一个单特征值，求\begin{enumerate}[label = (\arabic*)]
+        \item 正交变换$\bm{x}=\bm{Q}\bm{y}$将二次型$f(x_1,x_2,x_3)=\bm{x}^T\bm{A}\bm{x}$化为标准形；
+        \item $\bm{X}_{3 \times 2},$使得$\bm{X}^T(\bm{A}-3\bm{E})\bm{X}=\bm{0}$.
+    \end{enumerate}
+\end{exercise}
+\begin{solution}
+    (1) 令$|\bm{A}-k\bm{E}|=(\lambda - k + 2)(\lambda - k - 1)^2=0\Rightarrow$特征值为$\lambda+2, \lambda-1, \lambda-1$.
+
+    已知$\lambda_1=3$是单特征值.
+    若$\lambda-1=3$即$\lambda=4$，特征值为$6, 3, 3$，此时$3$是二重特征值，不合题意.
+    若$\lambda+2=3$即$\lambda=1$，特征值为$3, 0, 0$，$3$是单特征值，符合题意.
+    此时$\bm{A}=\begin{bNiceMatrix} 1 & 1 & 1 \\ 1 & 1 & 1 \\ 1 & 1 & 1 \end{bNiceMatrix}$.
+
+    当特征值$\mu_1=3$时，解$(\bm{A}-3\bm{E})\bm{x}=\bm{0}$得基础解系$\bm{\xi}_1=(1,1,1)^T$，
+    单位化得$\bm{e}_1=\frac{1}{\sqrt{3}}(1,1,1)^T$.
+
+    当特征值$\mu_2=\mu_3=0$时，解$\bm{A}\bm{x}=\bm{0}$即$x_1+x_2+x_3=0$，
+    可取基础解系$\bm{\xi}_2=(-1,1,0)^T,\bm{\xi}_3=(1,1,-2)^T$.
+    正交化、单位化得$\bm{e}_2=\frac{1}{\sqrt{2}}(-1,1,0)^T, \bm{e}_3=\frac{1}{\sqrt{6}}(1,1,-2)^T$.
+
+    令$\bm{Q}=(\bm{e}_1,\bm{e}_2,\bm{e}_3)$，
+    则正交变换$\bm{x}=\bm{Q}\bm{y}$将二次型化为标准形$f=3y_1^2$.
+
+    (2) 令$\bm{X}=(\bm{x}_1, \bm{x}_2),\,\bm{B}=\bm{A}-3\bm{E}$, 则
+    \[ \bm{X}^T\bm{B}\bm{X} = \begin{bNiceMatrix} \bm{x}_1^T\bm{B}\bm{x}_1 & \bm{x}_1^T\bm{B}\bm{x}_2 \\ \bm{x}_2^T\bm{B}\bm{x}_1 & \bm{x}_2^T\bm{B}\bm{x}_2 \end{bNiceMatrix} = \bm{0} \]
+    即需$\bm{x}_1, \bm{x}_2$满足$\bm{x}_i^T\bm{B}\bm{x}_j=0,\, i,j=1,2$.
+    令$\bm{x} = \bm{Qy}$，则
+    \[ \bm{x}^T\bm{B}\bm{x} = \bm{y}^T\bm{Q}^T\bm{B}\bm{Q}\bm{y} = \bm{y}^T\begin{bNiceMatrix} 0 & 0 & 0 \\ 0 & -3 & 0 \\ 0 & 0 & -3 \end{bNiceMatrix}\bm{y} =- 3y_2^2 - 3y_3^2 =0 \Rightarrow y_2 = y_3 = 0 \]
+    即$\bm{x}$为$\bm{e}_1$的倍数，取$\bm{x}_1=k_1\sqrt{3}\bm{e}_1, \bm{x}_2=k_2\sqrt{3}\bm{e}_1, k_1,k_2 \in \mathbb{R}$且$k_1,k_2$不全为零.
+    则
+    \[\bm{X}=\begin{bNiceMatrix} k_1 & k_2 \\ k_1 & k_2 \\ k_1 & k_2 \end{bNiceMatrix} \]
+
+
+\end{solution}
+\begin{exercise}
+    设$\bm{A}$为$3$阶实矩阵，$\bm{\alpha}_1,\bm{\alpha}_2,\bm{\alpha}_3$为三维非零向量. 已知$\bm{A}(\bm{\alpha}_1+\bm{\alpha}_2) = \bm{\alpha}_1-\bm{\alpha}_2,\, \bm{A}(\bm{\alpha}_1-\bm{\alpha}_2) = \bm{\alpha}_1+\bm{\alpha}_2,\, \bm{A}\bm{\alpha}_3 = \bm{\alpha}_1+\bm{\alpha}_3,\;$证明：向量组$\bm{\alpha}_1,\bm{\alpha}_2,\bm{\alpha}_3$线性无关.
+\end{exercise}
+\begin{solution}
+    由已知条件可得：
+    \begin{align*}
+        \bm{A}\bm{\alpha}_1 + \bm{A}\bm{\alpha}_2 &= \bm{\alpha}_1 - \bm{\alpha}_2 \quad (1) \\
+        \bm{A}\bm{\alpha}_1 - \bm{A}\bm{\alpha}_2 &= \bm{\alpha}_1 + \bm{\alpha}_2 \quad (2)
+    \end{align*}
+    $(1)+(2)$得$2\bm{A}\bm{\alpha}_1 = 2\bm{\alpha}_1 \implies \bm{A}\bm{\alpha}_1 = \bm{\alpha}_1$.
+    $(1)-(2)$得$2\bm{A}\bm{\alpha}_2 = -2\bm{\alpha}_2 \implies \bm{A}\bm{\alpha}_2 = -\bm{\alpha}_2$.
+    即$\bm{\alpha}_1,\bm{\alpha}_2$分别是$\bm{A}$对应于特征值$1,-1$的特征向量.
+    又由$\bm{A}\bm{\alpha}_3 = \bm{\alpha}_1+\bm{\alpha}_3 \implies (\bm{A}-\bm{E})\bm{\alpha}_3 = \bm{\alpha}_1$.
+    设有$k_1\bm{\alpha}_1+k_2\bm{\alpha}_2+k_3\bm{\alpha}_3=\bm{0}$.
+    用$\bm{A}-\bm{E}$左乘上式，得
+    \[ k_1(\bm{A}-\bm{E})\bm{\alpha}_1 + k_2(\bm{A}-\bm{E})\bm{\alpha}_2 + k_3(\bm{A}-\bm{E})\bm{\alpha}_3 = \bm{0} \]
+    由于$(\bm{A}-\bm{E})\bm{\alpha}_1 = \bm{0}$，$(\bm{A}-\bm{E})\bm{\alpha}_2 = -2\bm{\alpha}_2$，$(\bm{A}-\bm{E})\bm{\alpha}_3 = \bm{\alpha}_1$，故
+    \[ -2k_2\bm{\alpha}_2 + k_3\bm{\alpha}_1 = \bm{0} \]
+    用$\bm{A}+\bm{E}$左乘上式，得$k_3(2\bm{\alpha}_1) = \bm{0}$.
+    因$\bm{\alpha}_1 \neq \bm{0}$，故$k_3=0$. 代回前式得$k_2=0$. 再代回原式得$k_1=0$.
+    故向量组线性无关.
+\end{solution}
+\begin{exercise}
+    设$\bm{A}$为$3$阶实矩阵，$\bm{E}$为$3$阶单位矩阵，三维列向量$\bm{\alpha}=(1,2,3)^T$.\,现将$\bm{E}$的第一行与第二行互换得到矩阵$\bm{C}$，若$\bm{C}^T\bm{AC}=\bm{\alpha\alpha}^T+k\bm{E},\,$回答下列问题：
+    \begin{enumerate}[label = (\arabic*)]
+        \item 证明：$\bm{A}$为实对称矩阵；
+        \item 求可逆矩阵$\bm{P}$，使得$\bm{P}^{-1}\bm{AP}$为对角矩阵；
+        \item 若$f(x_1,x_2,x_3)=\bm{x}^T\bm{Ax}$为正定二次型，求$k$的取值范围.
+    \end{enumerate}
+\end{exercise}
+\begin{solution}
+    (1) 易知$\bm{C}$为正交矩阵且$\bm{C}=\bm{C}^T$. 令$\bm{B}=\bm{\alpha\alpha}^T+k\bm{E}$，显然$\bm{B}^T=\bm{B}$.
+    由$\bm{C}^T\bm{AC}=\bm{B}$得$\bm{A}=\bm{C}\bm{B}\bm{C}^T$.
+    $\bm{A}^T = (\bm{C}\bm{B}\bm{C}^T)^T = \bm{C}\bm{B}^T\bm{C}^T = \bm{C}\bm{B}\bm{C}^T = \bm{A}$，故$\bm{A}$为实对称矩阵.
+
+    (2) 矩阵$\bm{A}$与$\bm{B}$相似，$\bm{B}$的特征值为$\bm{\alpha\alpha}^T$的特征值加$k$.
+    $\bm{\alpha\alpha}^T$的特征值为$\text{tr}(\bm{\alpha\alpha}^T)=1^2+2^2+3^2=14$和$0,0$.
+    故$\bm{A}$的特征值为$14+k, k, k$.
+    
+    易得$\bm{A}=\begin{bNiceMatrix}
+        4 + k & 2 & 3 \\
+        2 & 1 + k & 6 \\
+        3 & 6 & 9 + k
+    \end{bNiceMatrix}$
+
+    当特征值$\lambda_1=14+k$时，解$(\bm{A}-(14+k)\bm{E})\bm{x}=\bm{0}$得基础解系$\bm{\xi}_1=(2,1,3)^T$，
+
+    当特征值$\lambda_2=\lambda_3=k$时，解$(\bm{A}-k\bm{E})\bm{x}=\bm{0}$得基础解系$\bm{\xi}_2=(-1,2,0)^T, \bm{\xi}_3=(-3,0,2)^T$.
+
+    取$\bm{P}=(\bm{\xi}_1, \bm{\xi}_2, \bm{\xi}_3)$，则$\bm{P}^{-1}\bm{AP} = \begin{bNiceMatrix}[columns-width = 1.5em]
+        14+k & 0 & 0 \\
+        0 & k & 0 \\
+        0 & 0 & k
+    \end{bNiceMatrix}$.
+
+
+    (3) $f$为正定二次型 $\iff$ $\bm{A}$的特征值全大于0.
+    即 $14+k>0$ 且 $k>0$，解得 $k>0$.
+\end{solution}
+\ifx\allfiles\undefined
+\end{document}
+\fi
