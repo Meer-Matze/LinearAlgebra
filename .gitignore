@@ -6,3 +6,5 @@
 *.synctex.gz
 # LaTeX generated PDFfiles
 *.pdf
+# vscode settings
+.vscode/
