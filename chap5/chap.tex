@@ -145,10 +145,10 @@
     \end{bNiceMatrix}$，求$\bm{A}$
 \end{exercise}
 \begin{solution}
-设 $\bm{\alpha}_1=(1,0,-1)^T, \bm{\alpha}_2=(1,0,1)^T$。由已知条件可得：
+设 $\bm{\alpha}_1=(1,0,-1)^T, \bm{\alpha}_2=(1,0,1)^T$．由已知条件可得：
 \[ \bm{A}\bm{\alpha}_1 = \begin{bNiceMatrix} -1 \\ 0 \\ 1 \end{bNiceMatrix} = -1 \bm{\alpha}_1, \quad \bm{A}\bm{\alpha}_2 = \begin{bNiceMatrix} 1 \\ 0 \\ 1 \end{bNiceMatrix} = 1 \bm{\alpha}_2 \]
-即 $\lambda_1=-1, \bm{\alpha}_1$; $\lambda_2=1, \bm{\alpha}_2$ 为 $\bm{A}$ 的特征对。
-又 $\rank(\bm{A})=2$，故 $\lambda_3=0$。
+即 $\lambda_1=-1, \bm{\alpha}_1$; $\lambda_2=1, \bm{\alpha}_2$ 为 $\bm{A}$ 的特征对．
+又 $\rank(\bm{A})=2$，故 $\lambda_3=0$．
 由谱分解定理：
 \begin{align*}
     \bm{A} &= \lambda_1 \frac{\bm{\alpha}_1\bm{\alpha}_1^T}{\|\bm{\alpha}_1\|^2} + \lambda_2 \frac{\bm{\alpha}_2\bm{\alpha}_2^T}{\|\bm{\alpha}_2\|^2} + \lambda_3 \frac{\bm{\alpha}_3\bm{\alpha}_3^T}{\|\bm{\alpha}_3\|^2} \\
@@ -171,24 +171,24 @@
     已知矩阵$\bm{A}_{3 \times 3}$满足$\rank(\bm{A}-2\bm{E})=1,\,\rank(\bm{A}+\bm{E})=2$，求$A_{11}+A_{22}+A_{33}$($A_{ii}$为代数余子式)
 \end{exercise}
 \begin{solution}
-几何重数 $g(\lambda) = n - \rank(\bm{A}-\lambda\bm{E})$。
-$g(2) = 3 - 1 = 2 \implies$ 至少 2 重特征值 2。
-$g(-1) = 3 - 2 = 1 \implies$ 至少 1 重特征值 -1。
-故 $\bm{A}$ 特征值为 $2, 2, -1$。
+几何重数 $g(\lambda) = n - \rank(\bm{A}-\lambda\bm{E})$．
+$g(2) = 3 - 1 = 2 \implies$ 至少 2 重特征值 2．
+$g(-1) = 3 - 2 = 1 \implies$ 至少 1 重特征值 -1．
+故 $\bm{A}$ 特征值为 $2, 2, -1$．
 \[ A_{11}+A_{22}+A_{33} = \operatorname{tr}(\bm{A}^*) = \sum_{i<j} \lambda_i\lambda_j = 2\times 2 + 2\times(-1) + 2\times(-1) = 0 \]
 \end{solution}
 \begin{exercise}
     已知矩阵$\bm{A}_{3 \times 3}$满足$\bm{A}^3\bm{\alpha}=3\bm{A}\bm{\alpha}-2\bm{A}^2\bm{\alpha}$，同时又有$\bm{\alpha}, \bm{A\alpha}, \bm{A}^2\bm{\alpha}$线性无关，求证：$|\bm{A}|=|\bm{A}+3\bm{E}|=|\bm{A}-\bm{E}|=0,\,|\bm{A}+\bm{E}|=-4$
 \end{exercise}
 \begin{solution}
-    设 $\bm{P}=(\bm{\alpha}, \bm{A}\bm{\alpha}, \bm{A}^2\bm{\alpha})$，因列向量线性无关，故 $\bm{P}$ 可逆。
+    设 $\bm{P}=(\bm{\alpha}, \bm{A}\bm{\alpha}, \bm{A}^2\bm{\alpha})$，因列向量线性无关，故 $\bm{P}$ 可逆．
     \[ 
     \bm{A}\bm{P} = (\bm{A}\bm{\alpha}, \bm{A}^2\bm{\alpha}, \bm{A}^3\bm{\alpha})=(\bm{\alpha}, \bm{A}\bm{\alpha}, \bm{A}^2\bm{\alpha}) \begin{bNiceMatrix} 0 & 0 & 0 \\ 1 & 0 & 3 \\ 0 & 1 & -2 \end{bNiceMatrix} = \bm{P}\bm{C} 
     \]
-    故 $\bm{A} \sim \bm{C} = \begin{bNiceMatrix} 0 & 0 & 0 \\ 1 & 0 & 3 \\ 0 & 1 & -2 \end{bNiceMatrix}$。
-    $\bm{C}$ 的特征多项式 $|\lambda\bm{E}-\bm{C}| =\lambda(\lambda-1)(\lambda+3)$。
-    特征值为 $0, 1, -3$。
-    故 $|\bm{A}| = 0 \cdot 1 \cdot (-3) = 0$。\\
+    故 $\bm{A} \sim \bm{C} = \begin{bNiceMatrix} 0 & 0 & 0 \\ 1 & 0 & 3 \\ 0 & 1 & -2 \end{bNiceMatrix}$．
+    $\bm{C}$ 的特征多项式 $|\lambda\bm{E}-\bm{C}| =\lambda(\lambda-1)(\lambda+3)$．
+    特征值为 $0, 1, -3$．
+    故 $|\bm{A}| = 0 \cdot 1 \cdot (-3) = 0$．\\
     $\bm{A}+3\bm{E}$ 的特征值为 $3, 4, 0\Rightarrow|\bm{A}+3\bm{E}|=0$\\
     $\bm{A}-\bm{E}$ 的特征值为 $-1, 0, -4\Rightarrow|\bm{A}-\bm{E}|=0$\\
     $\bm{A}+\bm{E}$ 的特征值为 $1, 2, -2\Rightarrow|\bm{A}+\bm{E}|=-4$
@@ -205,8 +205,8 @@ $g(-1) = 3 - 2 = 1 \implies$ 至少 1 重特征值 -1。
     \end{bNiceMatrix}$相似，求可逆矩阵$\bm{P}$，使得$\bm{P}^{-1}\bm{AP}=\bm{B}$
 \end{exercise}
 \begin{solution}
-由 $\operatorname{tr}(\bm{A}) = \operatorname{tr}(\bm{B}) \implies x-4 = y+1$ 及 $|\bm{A}| = |\bm{B}| \implies 4x-8 = -2y$，解得 $x=3, y=-2$。
-$\bm{A}$ 与 $\bm{B}$ 均相似于 $\bm{\Lambda} = \begin{bNiceMatrix} 2 & 0 & 0 \\ 0 & -1 & 0 \\ 0 & 0 & -2 \end{bNiceMatrix}$。
+由 $\operatorname{tr}(\bm{A}) = \operatorname{tr}(\bm{B}) \implies x-4 = y+1$ 及 $|\bm{A}| = |\bm{B}| \implies 4x-8 = -2y$，解得 $x=3, y=-2$．
+$\bm{A}$ 与 $\bm{B}$ 均相似于 $\bm{\Lambda} = \begin{bNiceMatrix} 2 & 0 & 0 \\ 0 & -1 & 0 \\ 0 & 0 & -2 \end{bNiceMatrix}$．
 计算特征向量（ $\bm{A}\bm{P}_1 = \bm{P}_1\bm{\Lambda}, \bm{B}\bm{P}_2 = \bm{P}_2\bm{\Lambda}$）：\\
 对 $\bm{A}$：
 \begin{enumerate}
@@ -226,7 +226,7 @@ $\bm{A}$ 与 $\bm{B}$ 均相似于 $\bm{\Lambda} = \begin{bNiceMatrix} 2 & 0 & 0
     \]
     取对应特征向量 $\bm{\xi}_3=(-1, 2, 4)^T$.
 \end{enumerate}
-从而 $\bm{P}_1 = \begin{bNiceMatrix} 1 & -2 & -1 \\ -2 & 1 & 2 \\ 0 & 0 & 4 \end{bNiceMatrix}$。\\
+从而 $\bm{P}_1 = \begin{bNiceMatrix} 1 & -2 & -1 \\ -2 & 1 & 2 \\ 0 & 0 & 4 \end{bNiceMatrix}$．\\
 对 $\bm{B}$：
 \begin{enumerate}
     \item 当 $\lambda_1=2$ 时，解$(2\bm{E}-\bm{B})\bm{x}=\bm{0} $
@@ -237,15 +237,15 @@ $\bm{A}$ 与 $\bm{B}$ 均相似于 $\bm{\Lambda} = \begin{bNiceMatrix} 2 & 0 & 0
     \item  当 $\lambda_3=-2$ 时，解$(-2\bm{E}-\bm{B})\bm{x}=\bm{0}$ \[\begin{bNiceMatrix} -4 & -1 & 0 \\ 0 & -1 & 0 \\ 0 & 0 & 0 \end{bNiceMatrix} \bm{x}=\bm{0}\] 
     取对应特征向量 $\bm{\eta}_3=(0, 0, 1)^T$.
 \end{enumerate}
-从而 $\bm{P}_2 = \begin{bNiceMatrix} 1 & 1 & 0 \\ 0 & -3 & 0 \\ 0 & 0 & 1 \end{bNiceMatrix}$。
-$\bm{P} = \bm{P}_1 \bm{P}_2^{-1} = \begin{bNiceMatrix} 1 & 1 & -1 \\ -2 & -1 & 2 \\ 0 & 0 & 4 \end{bNiceMatrix}$。
+从而 $\bm{P}_2 = \begin{bNiceMatrix} 1 & 1 & 0 \\ 0 & -3 & 0 \\ 0 & 0 & 1 \end{bNiceMatrix}$．
+$\bm{P} = \bm{P}_1 \bm{P}_2^{-1} = \begin{bNiceMatrix} 1 & 1 & -1 \\ -2 & -1 & 2 \\ 0 & 0 & 4 \end{bNiceMatrix}$．
 \end{solution}
 \begin{exercise}
     对于矩阵$\bm{A}_{3 \times 3}$，已知$\bm{\alpha}_1, \bm{\alpha}_2, \bm{\alpha}_3$线性无关，且满足$\bm{A\alpha}_1=\bm{\alpha}_1+\bm{\alpha}_2+\bm{\alpha}_3,\,\bm{A\alpha}_2=2\bm{\alpha}_2+\bm{\alpha}_3,\,\bm{A\alpha}_3=2\bm{\alpha}_2+3\bm{\alpha}_3$，求可逆矩阵$\bm{P}$，使得$\bm{P}^{-1}\bm{AP}$为对角矩阵
 \end{exercise}
 \begin{solution}
-设 $\bm{Q}=(\bm{\alpha}_1, \bm{\alpha}_2, \bm{\alpha}_3)$，则 $\bm{A}\bm{Q} = \bm{Q} \bm{C} = \bm{Q} \begin{bNiceMatrix} 1 & 0 & 0 \\ 1 & 2 & 2 \\ 1 & 1 & 3 \end{bNiceMatrix}$。
-$\bm{C}$ 的特征值为 $|\lambda\bm{E}-\bm{C}|= (\lambda-1)(\lambda-1)(\lambda-4)$，即 $1, 1, 4$。
+设 $\bm{Q}=(\bm{\alpha}_1, \bm{\alpha}_2, \bm{\alpha}_3)$，则 $\bm{A}\bm{Q} = \bm{Q} \bm{C} = \bm{Q} \begin{bNiceMatrix} 1 & 0 & 0 \\ 1 & 2 & 2 \\ 1 & 1 & 3 \end{bNiceMatrix}$．
+$\bm{C}$ 的特征值为 $|\lambda\bm{E}-\bm{C}|= (\lambda-1)(\lambda-1)(\lambda-4)$，即 $1, 1, 4$．
 \begin{enumerate}
     \item 当 $\lambda=1$ 时，解 $(\bm{E}-\bm{C})\bm{x}=\bm{0}$.
     \[
@@ -258,8 +258,8 @@ $\bm{C}$ 的特征值为 $|\lambda\bm{E}-\bm{C}|= (\lambda-1)(\lambda-1)(\lambda
     \]
     取对应特征向量 $\bm{\gamma}_3=(0, 1, 1)^T$.
 \end{enumerate}
-令特征向量矩阵 $\bm{R} = (\bm{\gamma}_1, \bm{\gamma}_2, \bm{\gamma}_3) = \begin{bNiceMatrix} 1 & 2 & 0 \\ -1 & 0 & 1 \\ 0 & -1 & 1 \end{bNiceMatrix}$，使得 $\bm{R}^{-1}\bm{C}\bm{R} = \bm{\Lambda}$。
-则 $\bm{P} = \bm{Q}\bm{R} = (\bm{\alpha}_1 - \bm{\alpha}_2, 2\bm{\alpha}_1 - \bm{\alpha}_3, \bm{\alpha}_2 + \bm{\alpha}_3)$。
+令特征向量矩阵 $\bm{R} = (\bm{\gamma}_1, \bm{\gamma}_2, \bm{\gamma}_3) = \begin{bNiceMatrix} 1 & 2 & 0 \\ -1 & 0 & 1 \\ 0 & -1 & 1 \end{bNiceMatrix}$，使得 $\bm{R}^{-1}\bm{C}\bm{R} = \bm{\Lambda}$．
+则 $\bm{P} = \bm{Q}\bm{R} = (\bm{\alpha}_1 - \bm{\alpha}_2, 2\bm{\alpha}_1 - \bm{\alpha}_3, \bm{\alpha}_2 + \bm{\alpha}_3)$．
 \end{solution}
 \ifx\allfiles\undefined
 \end{document}

@@ -21,14 +21,14 @@
     \end{align*}
     存在一个唯一的对称矩阵$A = (a_{ij})_{n \times n}$，使得
     \[ f(x_1, x_2, \cdots, x_n) = \bm{x}^T A \bm{x} \]
-    其中$\bm{x} = (x_1, x_2, \cdots, x_n)^T$。称$A$为二次型$f$的对应矩阵。
+    其中$\bm{x} = (x_1, x_2, \cdots, x_n)^T$．称$A$为二次型$f$的对应矩阵．
     \begin{myRemark}
-        若题目给出的$\bm{A}$不是对称矩阵，则应先将其化为对称矩阵$\frac{\bm{A} + \bm{A}^T}{2}$，再作为对应矩阵。
+        若题目给出的$\bm{A}$不是对称矩阵，则应先将其化为对称矩阵$\frac{\bm{A} + \bm{A}^T}{2}$，再作为对应矩阵．
     \end{myRemark}
 \end{definition}
 
 \begin{theorem}
-    对于任意给定的二次型，其对应的对称矩阵是唯一的。
+    对于任意给定的二次型，其对应的对称矩阵是唯一的．
 \end{theorem}
 
 \section{二次型的变换}
@@ -36,67 +36,67 @@
 \subsection{二次型与线性变换}
 
 \begin{definition}[非退化线性变换]
-    若线性变换 $\bm{x} = \bm{C}\bm{y}$ 的系数矩阵 $\bm{C}$ 可逆，则称为非退化线性变换。
-    非退化线性变换把二次型 $f = \bm{x}^T \bm{A} \bm{x}$ 变为 $g = \bm{y}^T (\bm{C}^T \bm{A} \bm{C}) \bm{y}$，矩阵 $\bm{C}^T \bm{A} \bm{C}$ 与 $\bm{A}$ 合同。
+    若线性变换 $\bm{x} = \bm{C}\bm{y}$ 的系数矩阵 $\bm{C}$ 可逆，则称为非退化线性变换．
+    非退化线性变换把二次型 $f = \bm{x}^T \bm{A} \bm{x}$ 变为 $g = \bm{y}^T (\bm{C}^T \bm{A} \bm{C}) \bm{y}$，矩阵 $\bm{C}^T \bm{A} \bm{C}$ 与 $\bm{A}$ 合同．
 \end{definition}
 
 \begin{definition}[惯性指数]
-    在二次型的标准型中，正系数的个数 $p$ 称为正惯性指数，负系数的个数 $q$ 称为负惯性指数。
+    在二次型的标准型中，正系数的个数 $p$ 称为正惯性指数，负系数的个数 $q$ 称为负惯性指数．
 \end{definition}
 
 \begin{definition}[规范型]
     二次型经非退化线性变换可化为如下形式，称为规范型：
     \[ f = y_1^2 + \cdots + y_p^2 - y_{p+1}^2 - \cdots - y_{p+q}^2 \]
-    其中 $p$ 为正惯性指数，$q$ 为负惯性指数。
+    其中 $p$ 为正惯性指数，$q$ 为负惯性指数．
 \end{definition}
 
 \begin{theorem}[惯性定理]
-    实二次型的标准型虽不唯一，但其规范型是唯一的。即正惯性指数 $p$ 和负惯性指数 $q$ 由二次型本身唯一确定。二次型对应的矩阵为$\bm{A}$，则有
+    实二次型的标准型虽不唯一，但其规范型是唯一的．即正惯性指数 $p$ 和负惯性指数 $q$ 由二次型本身唯一确定．二次型对应的矩阵为$\bm{A}$，则有
     \[p + q = \rank(\bm{A})\]
 \end{theorem}
 
 \subsection{矩阵合同}
 
 \begin{definition}[合同]
-    设 $\bm{A}, \bm{B}$ 为 $n$ 阶矩阵，若存在可逆矩阵 $\bm{C}$，使得 $\bm{C}^T \bm{A} \bm{C} = \bm{B}$，则称矩阵 $\bm{A}$ 与 $\bm{B}$ 合同，记作 $\bm{A} \simeq \bm{B}$。
+    设 $\bm{A}, \bm{B}$ 为 $n$ 阶矩阵，若存在可逆矩阵 $\bm{C}$，使得 $\bm{C}^T \bm{A} \bm{C} = \bm{B}$，则称矩阵 $\bm{A}$ 与 $\bm{B}$ 合同，记作 $\bm{A} \simeq \bm{B}$．
 \end{definition}
 
 \begin{theorem}
-    实对称矩阵 $\bm{A}$ 与 $\bm{B}$ 合同的充要条件是它们有相同的正惯性指数 $p$ 和负惯性指数 $q$（即具有相同的惯性指数）。
+    实对称矩阵 $\bm{A}$ 与 $\bm{B}$ 合同的充要条件是它们有相同的正惯性指数 $p$ 和负惯性指数 $q$（即具有相同的惯性指数）．
 \end{theorem}
 
 \begin{theorem}
-    实对称矩阵只能和实对称矩阵合同。\\
-    $\text{\qquad\qquad\qquad\quad}$非实对称只能和非实对称矩阵合同。
+    实对称矩阵只能和实对称矩阵合同．\\
+    $\text{\qquad\qquad\qquad\quad}$非实对称只能和非实对称矩阵合同．
 \end{theorem}
 \subsection{配方法}
 
 \begin{enumerate}
-    \item 若二次型含平方项 $x_i^2$（不妨设 $a_{ii} \neq 0$），则选取含 $x_i$ 的所有项进行配方。
+    \item 若二次型含平方项 $x_i^2$（不妨设 $a_{ii} \neq 0$），则选取含 $x_i$ 的所有项进行配方．
     \item 若二次型不含平方项，但含交叉项 $a_{ij} x_i x_j$，则通过变换
     \[ \begin{cases} x_i = y_i - y_j \\ x_j = y_i + y_j \end{cases} \]
-    引入平方项，再按第一种情况处理。
+    引入平方项，再按第一种情况处理．
 \end{enumerate}
 
 \subsection{初等变换法}
 
-对对称矩阵 $\bm{A}$ 作初等行变换，同时作对应的初等列变换，将其化为对角矩阵。
+对对称矩阵 $\bm{A}$ 作初等行变换，同时作对应的初等列变换，将其化为对角矩阵．
 \[ \bm{A} \xrightarrow{r_i + k r_j} \bm{A}_1 \xrightarrow{c_i + k c_j} \bm{A}_2 \xrightarrow{\cdots} \bm{\Lambda} \]
-若需求变换矩阵 $\bm{C}$，可构造 $(\bm{A} \mid \bm{E})$，对列作变换的同时作用于 $\bm{E}$，对行作变换时不作用于 $\bm{E}$。最后右侧的 $\bm{E}$ 变为 $\bm{C}$。
+若需求变换矩阵 $\bm{C}$，可构造 $(\bm{A} \mid \bm{E})$，对列作变换的同时作用于 $\bm{E}$，对行作变换时不作用于 $\bm{E}$．最后右侧的 $\bm{E}$ 变为 $\bm{C}$．
 
 \subsection{正交变换法}
 
 利用正交矩阵 $\bm{Q}$ 将 $\bm{A}$ 对角化（$\bm{Q}^T \bm{A} \bm{Q} = \bm{\Lambda}$）：
 \begin{enumerate}
-    \item 求出 $\bm{A}$ 的所有特征值 $\lambda_1, \cdots, \lambda_n$。
-    \item 求出对应特征向量，并进行正交化、单位化。
-    \item 构造正交矩阵 $\bm{Q}$，作变换 $\bm{x} = \bm{Q}\bm{y}$，得到标准型 $f = \lambda_1 y_1^2 + \cdots + \lambda_n y_n^2$。
+    \item 求出 $\bm{A}$ 的所有特征值 $\lambda_1, \cdots, \lambda_n$．
+    \item 求出对应特征向量，并进行正交化、单位化．
+    \item 构造正交矩阵 $\bm{Q}$，作变换 $\bm{x} = \bm{Q}\bm{y}$，得到标准型 $f = \lambda_1 y_1^2 + \cdots + \lambda_n y_n^2$．
 \end{enumerate}
 
 \section{正定二次型与正定矩阵}
 
 \begin{definition}[正定性]
-    若对任意非零向量$x \neq 0$，都有$x^T \bm{A} x > 0$，则称二次型$f$为正定二次型，称对称矩阵$\bm{A}$为正定矩阵。
+    若对任意非零向量$x \neq 0$，都有$x^T \bm{A} x > 0$，则称二次型$f$为正定二次型，称对称矩阵$\bm{A}$为正定矩阵．
 \end{definition}
 \begin{definition}[顺序主子式]
     设 $\bm{A} = (a_{ij})_{n \times n}$，子式
@@ -106,15 +106,15 @@
         \vdots & \ddots & \vdots \\
         a_{k1} & \cdots & a_{kk}
     \end{pmatrix} \]
-    称为矩阵 $\bm{A}$ 的 $k$ 阶顺序主子式 ($k = 1, 2, \cdots, n$)。
+    称为矩阵 $\bm{A}$ 的 $k$ 阶顺序主子式 ($k = 1, 2, \cdots, n$)．
 \end{definition}
 \begin{theorem}[正定矩阵的判别]
     $n$阶实对称矩阵$\bm{A}$正定的充要条件是：
     \begin{enumerate}
-        \item $\bm{A}$的所有特征值$\lambda_i > 0$。
-        \item $\bm{A}$的正惯性指数$p = n$。
-        \item $\bm{A}$合同于单位矩阵$\bm{E}$。
-        \item $\bm{A}$的所有顺序主子式全大于0。
+        \item $\bm{A}$的所有特征值$\lambda_i > 0$．
+        \item $\bm{A}$的正惯性指数$p = n$．
+        \item $\bm{A}$合同于单位矩阵$\bm{E}$．
+        \item $\bm{A}$的所有顺序主子式全大于0．
     \end{enumerate}
 \end{theorem}
 \section{二次型相关例题}

@@ -171,7 +171,7 @@
 \end{array}
 \]
     \begin{myRemark}
-        速记方法：左乘同行，右乘同列，取负号。
+        速记方法：左乘同行，右乘同列，取负号．
     \end{myRemark}
 \end{theorem}
 \newpage
@@ -290,14 +290,14 @@
 \end{solution}
 \section{初等矩阵}
 \begin{definition}
-    通过对单位矩阵进行一次初等行（列）变换所得到的矩阵称为\textbf{初等矩阵}。\\
+    通过对单位矩阵进行一次初等行（列）变换所得到的矩阵称为\textbf{初等矩阵}．\\
     初等矩阵可分为三类：
     \begin{enumerate}[label = (\arabic*)]
         \item 交换第$i$行（列）和第$j$行（列）的初等矩阵，记为$\bm{E}_{ij}$
         \item 将第$i$行（列）乘以非零常数$k$的初等矩阵，记为$\bm{E}_{i}(k)$
         \item 将第$i$行的$k$倍加到第$j$行（将第$j$列的$k$倍加到第$i$列）的初等矩阵，记为$\bm{E}_{ij}(k)$
     \end{enumerate}
-    注意：初等行（列）变换对应的初等矩阵作用在矩阵的左（右）侧。
+    注意：初等行（列）变换对应的初等矩阵作用在矩阵的左（右）侧．
 \end{definition}
 \begin{theorem}
     设$\bm{E}$为初等矩阵，则有如下性质：
@@ -392,15 +392,15 @@
 \end{solution}
 \section{矩阵的秩}
 \begin{definition}
-    对于任意矩阵$\bm{A}_{m \times n}$，删去某些行和列后得到的矩阵称为$\bm{A}$的一个\textbf{子矩阵}。\\
-    并称$\bm{A}$的子方阵的行列式为$\bm{A}$的一个\textbf{子式}。\\
+    对于任意矩阵$\bm{A}_{m \times n}$，删去某些行和列后得到的矩阵称为$\bm{A}$的一个\textbf{子矩阵}．\\
+    并称$\bm{A}$的子方阵的行列式为$\bm{A}$的一个\textbf{子式}．\\
 \end{definition}
 \begin{definition}
-    矩阵$\bm{A}$的所有\textcolor{Burgundy}{非零}子式中，子式的最高阶数称为矩阵$\bm{A}$的\textbf{秩}，记为$\rank(\bm{A})$。\\
-    特别地，零矩阵的秩定义为0。
+    矩阵$\bm{A}$的所有\textcolor{Burgundy}{非零}子式中，子式的最高阶数称为矩阵$\bm{A}$的\textbf{秩}，记为$\rank(\bm{A})$．\\
+    特别地，零矩阵的秩定义为0．
 \end{definition}
 \begin{theorem}
-    设$\bm{A}, \bm{B}$为同型矩阵，$k$为数，则有如下矩阵秩的不等式。\footnotemark
+    设$\bm{A}, \bm{B}$为同型矩阵，$k$为数，则有如下矩阵秩的不等式．\footnotemark
     \[
             0 \leq \rank(\bm{A}_{m \times n}) \leq \min\{m,n\}
     \]
@@ -425,10 +425,10 @@
     \[
         \rank(\bm{A}) = n - \dim N(\bm{A}) = n - \dim N(\bm{A}^T\bm{A}) = \rank(\bm{A}^T\bm{A})
     \]
-    同理可证$\rank(\bm{A}^T) = \rank(\bm{A}\bm{A}^T)$，又由$\rank(\bm{A}) = \rank(\bm{A}^T)$知结论成立。
+    同理可证$\rank(\bm{A}^T) = \rank(\bm{A}\bm{A}^T)$，又由$\rank(\bm{A}) = \rank(\bm{A}^T)$知结论成立．
 \end{proof}
 \begin{theorem}
-    列满秩矩阵左乘矩阵$\bm{A}_{m \times n}$，不改变$\bm{A}$的秩；行满秩矩阵右乘矩阵$\bm{A}$，不改变$\bm{A}$的秩。即
+    列满秩矩阵左乘矩阵$\bm{A}_{m \times n}$，不改变$\bm{A}$的秩；行满秩矩阵右乘矩阵$\bm{A}$，不改变$\bm{A}$的秩．即
     \[
         \rank(\bm{P}\bm{A}) = \rank(\bm{A}), \quad \text{其中}\ \rank(\bm{P}) = m
     \]
@@ -443,7 +443,7 @@
     \[
         \rank(\bm{A}) = n - \dim N(\bm{A}) = n - \dim N(\bm{P}\bm{A}) = \rank(\bm{P}\bm{A})
     \]
-    要证明$\rank(\bm{A}\bm{Q}) = \rank(\bm{A})$只需证明$\rank(\bm{Q}^T\bm{A}^T) = \rank(\bm{A}^T)$，而$\bm{Q}^T$是列满秩矩阵，故结论成立。
+    要证明$\rank(\bm{A}\bm{Q}) = \rank(\bm{A})$只需证明$\rank(\bm{Q}^T\bm{A}^T) = \rank(\bm{A}^T)$，而$\bm{Q}^T$是列满秩矩阵，故结论成立．
 \end{proof}
 \begin{corollary}
     若$\bm{A}\sim\bm{B}$，则$\rank(\bm{A}) = \rank(\bm{B})$\\
@@ -545,7 +545,7 @@
         \end{bNiceMatrix}=2~\rank(\bm{A})
     \]
     选项C：\\
-        由于在进行列变换时只能进行右乘，故无法将$\bm{BA}$化为$\bm{0}$，则C选项不成立。\\
+        由于在进行列变换时只能进行右乘，故无法将$\bm{BA}$化为$\bm{0}$，则C选项不成立．\\
     选项D：\\
     \[\begin{bNiceMatrix}
             \bm{A} & \bm{0}\\

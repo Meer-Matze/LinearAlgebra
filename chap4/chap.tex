@@ -8,7 +8,7 @@
 \fi
 \chapter{线性方程组}
 \begin{theorem}
-    设$\bm{A}$为$m\times n$矩阵，$\bm{b}\in \mathbb{R}^m$，则线性方程组$\bm{Ax}=\bm{b}$有解的充分必要条件是$\rank(\bm{A}) = \rank(\bm{A}|\bm{b})$。
+    设$\bm{A}$为$m\times n$矩阵，$\bm{b}\in \mathbb{R}^m$，则线性方程组$\bm{Ax}=\bm{b}$有解的充分必要条件是$\rank(\bm{A}) = \rank(\bm{A}|\bm{b})$．
 \end{theorem}
 \begin{example}
     设$\bm{A}_{4\times 4}=(\bm{\alpha_1} , \bm{\alpha_2} , \bm{\alpha_3} , \bm{\alpha_4})$，
@@ -28,11 +28,11 @@
 \begin{example}
     设$\bm{A}_{4\times 4}=(\bm{\alpha_1} , \bm{\alpha_2} , \bm{\alpha_3} , \bm{\alpha_4})$，
     且$\bm{Ax}=\bm{\beta}$的通解为$k(1 , -2 , 4 , 0)^T+(1, 2, 2,1)^T$，记$\bm{B}=(\bm{\alpha_3}, \bm{\alpha_2}, \bm{\alpha_1}, 
-    \bm{\beta}-\bm{\alpha_4})$，求$\bm{Bx}=\bm{\alpha_1}-\bm{\alpha_2}$的通解。
+    \bm{\beta}-\bm{\alpha_4})$，求$\bm{Bx}=\bm{\alpha_1}-\bm{\alpha_2}$的通解．
 \end{example}
 \begin{solution}
     由题意得到$\rank(\bm{A})=3$，$\bm{\alpha_1}-2\bm{\alpha_2}+4\bm{\alpha_3}=\bm{0},\bm{\alpha_1}+\bm{\alpha_2}+2\bm{\alpha_3}+\bm{\alpha_4}=\bm{\beta}
-    \Rightarrow (4, -2, 1, 0)^T,(2, 2, 1, -1)^T$是$\bm{Bx}=\bm{0}$的解，且二者线性无关。
+    \Rightarrow (4, -2, 1, 0)^T,(2, 2, 1, -1)^T$是$\bm{Bx}=\bm{0}$的解，且二者线性无关．
     显然$(0, -1, 1, 0)^T$是$\bm{Bx}=\bm{\alpha_1}-\bm{\alpha_2}$的一个特解，$\rank(\bm{B})=2$，于是可知$\bm{Bx}=\bm{\alpha_1}-\bm{\alpha_2}$的通解为
     \[
         \bm{x} = k_1(4, -2, 1, 0)^T + k_2(2, 2, 1, -1)^T + (0, -1, 1, 0)^T
@@ -53,7 +53,7 @@
         x_1+bx_2+cx_3=0\\
         2x_1+b^2x_2+(c+1)x_3=0\\
     \end{cases}$
-    有相同的解集，求$a,b,c$的值。
+    有相同的解集，求$a,b,c$的值．
 \end{example}
 \setcounter{inleq}{1}
 \begin{solution}

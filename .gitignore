@@ -1,1 +1,8 @@
-/main.pdf
+# LaTeX intermediate files
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+# LaTeX generated PDFfiles
+*.pdf
