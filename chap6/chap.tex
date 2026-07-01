@@ -93,31 +93,6 @@
     \item 构造正交矩阵 $\bm{Q}$，作变换 $\bm{x} = \bm{Q}\bm{y}$，得到标准型 $f = \lambda_1 y_1^2 + \cdots + \lambda_n y_n^2$．
 \end{enumerate}
 
-\section{正定二次型与正定矩阵}
-
-\begin{definition}[正定性]
-    若对任意非零向量$x \neq 0$，都有$x^T \bm{A} x > 0$，则称二次型$f$为正定二次型，称对称矩阵$\bm{A}$为正定矩阵．
-\end{definition}
-\begin{definition}[顺序主子式]
-    设 $\bm{A} = (a_{ij})_{n \times n}$，子式
-    \[ D_k = \det
-    \begin{pmatrix}
-        a_{11} & \cdots & a_{1k} \\
-        \vdots & \ddots & \vdots \\
-        a_{k1} & \cdots & a_{kk}
-    \end{pmatrix} \]
-    称为矩阵 $\bm{A}$ 的 $k$ 阶顺序主子式 ($k = 1, 2, \cdots, n$)．
-\end{definition}
-\begin{theorem}[正定矩阵的判别]
-    $n$阶实对称矩阵$\bm{A}$正定的充要条件是：
-    \begin{enumerate}
-        \item $\bm{A}$的所有特征值$\lambda_i > 0$．
-        \item $\bm{A}$的正惯性指数$p = n$．
-        \item $\bm{A}$合同于单位矩阵$\bm{E}$．
-        \item $\bm{A}$的所有顺序主子式全大于0．
-    \end{enumerate}
-\end{theorem}
-\section{二次型相关例题}
 \begin{example}
     设二次型$f(x_1, x_2, x_3) = \displaystyle\sum_{i=1}^{3}\sum_{j=1}^{3}ijx_ix_j$
     \begin{enumerate}[label=(\arabic*)]
@@ -145,6 +120,64 @@
         其中$k_1, k_2$为任意实数.
     \end{enumerate}
 \end{solution}
+
+\begin{example}
+    设二次型$f(x_1, x_2) = x_1^2 - 4x_1 x_2 + 4x_2^2$经正交变换$\begin{pNiceMatrix} x_1 \\ x_2 \end{pNiceMatrix} = \bm{Q} \begin{pNiceMatrix} y_1 \\ y_2 \end{pNiceMatrix}$化为一个新的二次型$g(y_1, y_2) = ay_1^2+4y_1y_2+by_2^2$，其中$a \ge b$，求:\begin{enumerate}[label=(\arabic*)]
+        \item 常数$a, b$;
+        \item 一个正交矩阵$\bm{Q}$.
+    \end{enumerate}
+\end{example}
+\begin{solution}
+    \begin{enumerate}
+        \item 二次型$f, g$的矩阵分别为$\bm{A} = \begin{pNiceMatrix} 1 & -2 \\ -2 & 4 \end{pNiceMatrix}$, $\bm{B} = \begin{pNiceMatrix} a & 2 \\ 2 & b \end{pNiceMatrix}$.
+
+        因$f, g$经正交变换相互转化，故$\bm{A}, \bm{B}$相似，有相同的特征值，从而迹与行列式相等：
+        \[ \begin{cases} \operatorname{tr}(\bm{A}) = 1+4 = a+b = \operatorname{tr}(\bm{B}) \\ \det(\bm{A}) = 4-4 = ab-4 = \det(\bm{B}) \end{cases} \Rightarrow \begin{cases} a+b=5 \\ ab=4 \end{cases} \]
+        解得$\begin{cases} a=1 \\ b=4 \end{cases}$或$\begin{cases} a=4 \\ b=1 \end{cases}$，因$a \ge b$，故$a=4, b=1$.
+        \item  $\bm{A} = \begin{pNiceMatrix} 1 & -2 \\ -2 & 4 \end{pNiceMatrix}$的特征值为$\lambda_1=5, \lambda_2=0$.
+
+        对应$\lambda_1=5$，$\bm{\xi}_1 = \frac{1}{\sqrt{5}}(1, -2)^T$；对应$\lambda_2=0$，$\bm{\xi}_2 = \frac{1}{\sqrt{5}}(2, 1)^T$.
+
+        令$\bm{Q}_1 = (\bm{\xi}_1, \bm{\xi}_2) = \frac{1}{\sqrt{5}}\begin{pNiceMatrix} 1 & 2 \\ -2 & 1 \end{pNiceMatrix}$.
+
+        $\bm{B} = \begin{pNiceMatrix} 4 & 2 \\ 2 & 1 \end{pNiceMatrix}$同理可得特征值$\lambda_1=5, \lambda_2=0$.
+
+        对应$\lambda_1=5$，$\bm{\eta}_1 = \frac{1}{\sqrt{5}}(2, 1)^T$；对应$\lambda_2=0$，$\bm{\eta}_2 = \frac{1}{\sqrt{5}}(-1, 2)^T$.
+
+        令$\bm{Q}_2 = (\bm{\eta}_1, \bm{\eta}_2) = \frac{1}{\sqrt{5}}\begin{pNiceMatrix} 2 & -1 \\ 1 & 2 \end{pNiceMatrix}$.
+
+        由$\bm{Q}_1^T \bm{A} \bm{Q}_1 = \bm{\Lambda} = \bm{Q}_2^T \bm{B} \bm{Q}_2$，得$\bm{B} = \bm{Q}_2 \bm{Q}_1^T \bm{A} \bm{Q}_1 \bm{Q}_2^T = (\bm{Q}_1\bm{Q}_2^T)^T \bm{A} (\bm{Q}_1\bm{Q}_2^T)$.
+
+        故取$\bm{Q} = \bm{Q}_1\bm{Q}_2^T = \dfrac{1}{5}\begin{pNiceMatrix} 1 & 2 \\ -2 & 1 \end{pNiceMatrix}\begin{pNiceMatrix} 2 & -1 \\ 1 & 2 \end{pNiceMatrix} = \begin{pNiceMatrix}[cell-space-top-limit=3pt] 0 & 1 \\ -1 & 1 \end{pNiceMatrix}$.
+    \end{enumerate}
+\end{solution}
+
+\section{正定二次型与正定矩阵}
+
+\begin{definition}[正定性]
+    若对任意非零向量$x \neq 0$，都有$x^T \bm{A} x > 0$，则称二次型$f$为正定二次型，称对称矩阵$\bm{A}$为正定矩阵．
+\end{definition}
+\begin{definition}[顺序主子式]
+    设 $\bm{A} = (a_{ij})_{n \times n}$，子式
+    \[ D_k = \det
+    \begin{pmatrix}
+        a_{11} & \cdots & a_{1k} \\
+        \vdots & \ddots & \vdots \\
+        a_{k1} & \cdots & a_{kk}
+    \end{pmatrix} \]
+    称为矩阵 $\bm{A}$ 的 $k$ 阶顺序主子式 ($k = 1, 2, \cdots, n$)．
+\end{definition}
+\begin{theorem}[正定矩阵的判别]
+    $n$阶实对称矩阵$\bm{A}$正定的充要条件是：
+    \begin{enumerate}
+        \item $\bm{A}$的所有特征值$\lambda_i > 0$．
+        \item $\bm{A}$的正惯性指数$p = n$．
+        \item $\bm{A}$合同于单位矩阵$\bm{E}$．
+        \item $\bm{A}$的所有顺序主子式全大于0．
+    \end{enumerate}
+\end{theorem}
+
+
 \begin{example}
     设实二次型$f(x_1, x_2, x_3) = (x_1-x_2+x_3)^2+(x_2+x_3)^2+(x_1+ax_3)^2$，其中$a$为实参数，求：
     \begin{enumerate}[label=(\arabic*)]
@@ -180,35 +213,81 @@
         由(2)知，当$a \neq 2$时，$p=3$，是正定二次型；当$a=2$时，不是正定二次型.
     \end{enumerate}
 \end{solution}
-\begin{example}
-    设二次型$f(x_1, x_2) = x_1^2 - 4x_1 x_2 + 4x_2^2$经正交变换$\begin{pNiceMatrix} x_1 \\ x_2 \end{pNiceMatrix} = \bm{Q} \begin{pNiceMatrix} y_1 \\ y_2 \end{pNiceMatrix}$化为一个新的二次型$g(y_1, y_2) = ay_1^2+4y_1y_2+by_2^2$，其中$a \ge b$，求:\begin{enumerate}[label=(\arabic*)]
-        \item 常数$a, b$;
-        \item 一个正交矩阵$\bm{Q}$.
+\section{习题}
+\begin{exercise}
+  已知$\bm{A}=\begin{bNiceMatrix}[columns-width = 1.5em]
+    \lambda & 1 & 1 \\
+    1 & \lambda & 1 \\
+    1 & 1 & \lambda
+    \end{bNiceMatrix}$，若$\lambda_1=3$是$\bm{A}$的一个单特征值，求\begin{enumerate}[label = (\arabic*)]
+        \item 正交变换$\bm{x}=\bm{Q}\bm{y}$将二次型$f(x_1,x_2,x_3)=\bm{x}^T\bm{A}\bm{x}$化为标准形；
+        \item $\bm{X}_{3 \times 2},$使得$\bm{X}^T(\bm{A}-3\bm{E})\bm{X}=\bm{0}$.
     \end{enumerate}
-\end{example}
+\end{exercise}
 \begin{solution}
-    \begin{enumerate}
-        \item 二次型$f, g$的矩阵分别为$\bm{A} = \begin{pNiceMatrix} 1 & -2 \\ -2 & 4 \end{pNiceMatrix}$, $\bm{B} = \begin{pNiceMatrix} a & 2 \\ 2 & b \end{pNiceMatrix}$.
+    (1) 令$|\bm{A}-k\bm{E}|=(\lambda - k + 2)(\lambda - k - 1)^2=0\Rightarrow$特征值为$\lambda+2, \lambda-1, \lambda-1$.
 
-        因$f, g$经正交变换相互转化，故$\bm{A}, \bm{B}$相似，有相同的特征值，从而迹与行列式相等：
-        \[ \begin{cases} \operatorname{tr}(\bm{A}) = 1+4 = a+b = \operatorname{tr}(\bm{B}) \\ \det(\bm{A}) = 4-4 = ab-4 = \det(\bm{B}) \end{cases} \Rightarrow \begin{cases} a+b=5 \\ ab=4 \end{cases} \]
-        解得$\begin{cases} a=1 \\ b=4 \end{cases}$或$\begin{cases} a=4 \\ b=1 \end{cases}$，因$a \ge b$，故$a=4, b=1$.
-        \item  $\bm{A} = \begin{pNiceMatrix} 1 & -2 \\ -2 & 4 \end{pNiceMatrix}$的特征值为$\lambda_1=5, \lambda_2=0$.
+    已知$\lambda_1=3$是单特征值.
+    若$\lambda-1=3$即$\lambda=4$，特征值为$6, 3, 3$，此时$3$是二重特征值，不合题意.
+    若$\lambda+2=3$即$\lambda=1$，特征值为$3, 0, 0$，$3$是单特征值，符合题意.
+    此时$\bm{A}=\begin{bNiceMatrix} 1 & 1 & 1 \\ 1 & 1 & 1 \\ 1 & 1 & 1 \end{bNiceMatrix}$.
 
-        对应$\lambda_1=5$，$\bm{\xi}_1 = \frac{1}{\sqrt{5}}(1, -2)^T$；对应$\lambda_2=0$，$\bm{\xi}_2 = \frac{1}{\sqrt{5}}(2, 1)^T$.
+    当特征值$\mu_1=3$时，解$(\bm{A}-3\bm{E})\bm{x}=\bm{0}$得基础解系$\bm{\xi}_1=(1,1,1)^T$，
+    单位化得$\bm{e}_1=\frac{1}{\sqrt{3}}(1,1,1)^T$.
 
-        令$\bm{Q}_1 = (\bm{\xi}_1, \bm{\xi}_2) = \frac{1}{\sqrt{5}}\begin{pNiceMatrix} 1 & 2 \\ -2 & 1 \end{pNiceMatrix}$.
+    当特征值$\mu_2=\mu_3=0$时，解$\bm{A}\bm{x}=\bm{0}$即$x_1+x_2+x_3=0$，
+    可取基础解系$\bm{\xi}_2=(-1,1,0)^T,\bm{\xi}_3=(1,1,-2)^T$.
+    正交化、单位化得$\bm{e}_2=\frac{1}{\sqrt{2}}(-1,1,0)^T, \bm{e}_3=\frac{1}{\sqrt{6}}(1,1,-2)^T$.
 
-        $\bm{B} = \begin{pNiceMatrix} 4 & 2 \\ 2 & 1 \end{pNiceMatrix}$同理可得特征值$\lambda_1=5, \lambda_2=0$.
+    令$\bm{Q}=(\bm{e}_1,\bm{e}_2,\bm{e}_3)$，
+    则正交变换$\bm{x}=\bm{Q}\bm{y}$将二次型化为标准形$f=3y_1^2$.
 
-        对应$\lambda_1=5$，$\bm{\eta}_1 = \frac{1}{\sqrt{5}}(2, 1)^T$；对应$\lambda_2=0$，$\bm{\eta}_2 = \frac{1}{\sqrt{5}}(-1, 2)^T$.
+    (2) 令$\bm{X}=(\bm{x}_1, \bm{x}_2),\,\bm{B}=\bm{A}-3\bm{E}$, 则
+    \[ \bm{X}^T\bm{B}\bm{X} = \begin{bNiceMatrix} \bm{x}_1^T\bm{B}\bm{x}_1 & \bm{x}_1^T\bm{B}\bm{x}_2 \\ \bm{x}_2^T\bm{B}\bm{x}_1 & \bm{x}_2^T\bm{B}\bm{x}_2 \end{bNiceMatrix} = \bm{0} \]
+    即需$\bm{x}_1, \bm{x}_2$满足$\bm{x}_i^T\bm{B}\bm{x}_j=0,\, i,j=1,2$.
+    令$\bm{x} = \bm{Qy}$，则
+    \[ \bm{x}^T\bm{B}\bm{x} = \bm{y}^T\bm{Q}^T\bm{B}\bm{Q}\bm{y} = \bm{y}^T\begin{bNiceMatrix} 0 & 0 & 0 \\ 0 & -3 & 0 \\ 0 & 0 & -3 \end{bNiceMatrix}\bm{y} =- 3y_2^2 - 3y_3^2 =0 \Rightarrow y_2 = y_3 = 0 \]
+    即$\bm{x}$为$\bm{e}_1$的倍数，取$\bm{x}_1=k_1\sqrt{3}\bm{e}_1, \bm{x}_2=k_2\sqrt{3}\bm{e}_1, k_1,k_2 \in \mathbb{R}$且$k_1,k_2$不全为零.
+    则
+    \[\bm{X}=\begin{bNiceMatrix} k_1 & k_2 \\ k_1 & k_2 \\ k_1 & k_2 \end{bNiceMatrix} \]
+\end{solution}
 
-        令$\bm{Q}_2 = (\bm{\eta}_1, \bm{\eta}_2) = \frac{1}{\sqrt{5}}\begin{pNiceMatrix} 2 & -1 \\ 1 & 2 \end{pNiceMatrix}$.
-
-        由$\bm{Q}_1^T \bm{A} \bm{Q}_1 = \bm{\Lambda} = \bm{Q}_2^T \bm{B} \bm{Q}_2$，得$\bm{B} = \bm{Q}_2 \bm{Q}_1^T \bm{A} \bm{Q}_1 \bm{Q}_2^T = (\bm{Q}_1\bm{Q}_2^T)^T \bm{A} (\bm{Q}_1\bm{Q}_2^T)$.
-
-        故取$\bm{Q} = \bm{Q}_1\bm{Q}_2^T = \dfrac{1}{5}\begin{pNiceMatrix} 1 & 2 \\ -2 & 1 \end{pNiceMatrix}\begin{pNiceMatrix} 2 & -1 \\ 1 & 2 \end{pNiceMatrix} = \begin{pNiceMatrix}[cell-space-top-limit=3pt] 0 & 1 \\ -1 & 1 \end{pNiceMatrix}$.
+\begin{exercise}
+    设$\bm{A}$为$3$阶实矩阵，$\bm{E}$为$3$阶单位矩阵，三维列向量$\bm{\alpha}=(1,2,3)^T$.\,现将$\bm{E}$的第一行与第二行互换得到矩阵$\bm{C}$，若$\bm{C}^T\bm{AC}=\bm{\alpha\alpha}^T+k\bm{E},\,$回答下列问题：
+    \begin{enumerate}[label = (\arabic*)]
+        \item 证明：$\bm{A}$为实对称矩阵；
+        \item 求可逆矩阵$\bm{P}$，使得$\bm{P}^{-1}\bm{AP}$为对角矩阵；
+        \item 若$f(x_1,x_2,x_3)=\bm{x}^T\bm{Ax}$为正定二次型，求$k$的取值范围.
     \end{enumerate}
+\end{exercise}
+\begin{solution}
+    (1) 易知$\bm{C}$为正交矩阵且$\bm{C}=\bm{C}^T$. 令$\bm{B}=\bm{\alpha\alpha}^T+k\bm{E}$，显然$\bm{B}^T=\bm{B}$.
+    由$\bm{C}^T\bm{AC}=\bm{B}$得$\bm{A}=\bm{C}\bm{B}\bm{C}^T$.
+    $\bm{A}^T = (\bm{C}\bm{B}\bm{C}^T)^T = \bm{C}\bm{B}^T\bm{C}^T = \bm{C}\bm{B}\bm{C}^T = \bm{A}$，故$\bm{A}$为实对称矩阵.
+
+    (2) 矩阵$\bm{A}$与$\bm{B}$相似，$\bm{B}$的特征值为$\bm{\alpha\alpha}^T$的特征值加$k$.
+    $\bm{\alpha\alpha}^T$的特征值为$\text{tr}(\bm{\alpha\alpha}^T)=1^2+2^2+3^2=14$和$0,0$.
+    故$\bm{A}$的特征值为$14+k, k, k$.
+    
+    易得$\bm{A}=\begin{bNiceMatrix}
+        4 + k & 2 & 3 \\
+        2 & 1 + k & 6 \\
+        3 & 6 & 9 + k
+    \end{bNiceMatrix}$
+
+    当特征值$\lambda_1=14+k$时，解$(\bm{A}-(14+k)\bm{E})\bm{x}=\bm{0}$得基础解系$\bm{\xi}_1=(2,1,3)^T$，
+
+    当特征值$\lambda_2=\lambda_3=k$时，解$(\bm{A}-k\bm{E})\bm{x}=\bm{0}$得基础解系$\bm{\xi}_2=(-1,2,0)^T, \bm{\xi}_3=(-3,0,2)^T$.
+
+    取$\bm{P}=(\bm{\xi}_1, \bm{\xi}_2, \bm{\xi}_3)$，则$\bm{P}^{-1}\bm{AP} = \begin{bNiceMatrix}[columns-width = 1.5em]
+        14+k & 0 & 0 \\
+        0 & k & 0 \\
+        0 & 0 & k
+    \end{bNiceMatrix}$.
+
+
+    (3) $f$为正定二次型 $\iff$ $\bm{A}$的特征值全大于0.
+    即 $14+k>0$ 且 $k>0$，解得 $k>0$.
 \end{solution}
 \ifx\allfiles\undefined
 \end{document}

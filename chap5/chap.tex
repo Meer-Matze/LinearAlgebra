@@ -53,6 +53,40 @@
     当且仅当所有特征值的几何重数等于代数重数时，矩阵 $A$ 可对角化.
 \end{theorem}
 
+\begin{example}
+    已知矩阵$\bm{A}_{3 \times 3}$满足$\rank(\bm{A}-2\bm{E})=1,\,\rank(\bm{A}+\bm{E})=2$，求$A_{11}+A_{22}+A_{33}$($A_{ii}$为代数余子式)
+\end{example}
+\begin{solution}
+几何重数 $g(\lambda) = n - \rank(\bm{A}-\lambda\bm{E})$．
+$g(2) = 3 - 1 = 2 \implies$ 至少 2 重特征值 2．
+$g(-1) = 3 - 2 = 1 \implies$ 至少 1 重特征值 -1．
+故 $\bm{A}$ 特征值为 $2, 2, -1$．
+\[ A_{11}+A_{22}+A_{33} = \operatorname{tr}(\bm{A}^*) = \sum_{i<j} \lambda_i\lambda_j = 2\times 2 + 2\times(-1) + 2\times(-1) = 0 \]
+\end{solution}
+
+\begin{example}
+    设$\bm{A}$为$3$阶实矩阵，$\bm{\alpha}_1,\bm{\alpha}_2,\bm{\alpha}_3$为三维非零向量. 已知$\bm{A}(\bm{\alpha}_1+\bm{\alpha}_2) = \bm{\alpha}_1-\bm{\alpha}_2,\, \bm{A}(\bm{\alpha}_1-\bm{\alpha}_2) = \bm{\alpha}_1+\bm{\alpha}_2,\, \bm{A}\bm{\alpha}_3 = \bm{\alpha}_1+\bm{\alpha}_3,\;$证明：向量组$\bm{\alpha}_1,\bm{\alpha}_2,\bm{\alpha}_3$线性无关.
+\end{example}
+\begin{proof}
+    由已知条件可得：
+    \begin{align*}
+        \bm{A}\bm{\alpha}_1 + \bm{A}\bm{\alpha}_2 &= \bm{\alpha}_1 - \bm{\alpha}_2 \quad (1) \\
+        \bm{A}\bm{\alpha}_1 - \bm{A}\bm{\alpha}_2 &= \bm{\alpha}_1 + \bm{\alpha}_2 \quad (2)
+    \end{align*}
+    $(1)+(2)$得$2\bm{A}\bm{\alpha}_1 = 2\bm{\alpha}_1 \implies \bm{A}\bm{\alpha}_1 = \bm{\alpha}_1$.
+    $(1)-(2)$得$2\bm{A}\bm{\alpha}_2 = -2\bm{\alpha}_2 \implies \bm{A}\bm{\alpha}_2 = -\bm{\alpha}_2$.
+    即$\bm{\alpha}_1,\bm{\alpha}_2$分别是$\bm{A}$对应于特征值$1,-1$的特征向量.
+    又由$\bm{A}\bm{\alpha}_3 = \bm{\alpha}_1+\bm{\alpha}_3 \implies (\bm{A}-\bm{E})\bm{\alpha}_3 = \bm{\alpha}_1$.
+    设有$k_1\bm{\alpha}_1+k_2\bm{\alpha}_2+k_3\bm{\alpha}_3=\bm{0}$.
+    用$\bm{A}-\bm{E}$左乘上式，得
+    \[ k_1(\bm{A}-\bm{E})\bm{\alpha}_1 + k_2(\bm{A}-\bm{E})\bm{\alpha}_2 + k_3(\bm{A}-\bm{E})\bm{\alpha}_3 = \bm{0} \]
+    由于$(\bm{A}-\bm{E})\bm{\alpha}_1 = \bm{0}$，$(\bm{A}-\bm{E})\bm{\alpha}_2 = -2\bm{\alpha}_2$，$(\bm{A}-\bm{E})\bm{\alpha}_3 = \bm{\alpha}_1$，故
+    \[ -2k_2\bm{\alpha}_2 + k_3\bm{\alpha}_1 = \bm{0} \]
+    用$\bm{A}+\bm{E}$左乘上式，得$k_3(2\bm{\alpha}_1) = \bm{0}$.
+    因$\bm{\alpha}_1 \neq \bm{0}$，故$k_3=0$. 代回前式得$k_2=0$. 再代回原式得$k_1=0$.
+    故向量组线性无关.
+\end{proof}
+
 \section{相似对角化}
 \begin{definition}
 	设 $\bm{A}, \bm{B}$ 都是 $n$ 阶矩阵, 若有可逆矩阵 $\bm{P}$, 使 $\bm{P}^{-1}\bm{A}\bm{P}=\bm{B}$, 则称 $\bm{A}$ 与 $\bm{B}$ \textbf{相似}, 记为 $\bm{A} \sim \bm{B}$.
@@ -85,6 +119,28 @@
 		\item \textbf{秩 1 矩阵}: 秩 1 矩阵 $\bm{A}=\bm{\alpha}\bm{\beta}^T$ 可相似对角化, 当且仅当 $\operatorname{tr}(\bm{A})=\bm{\beta}^T\bm{\alpha} \neq 0$.
 	\end{enumerate}
 \end{theorem}
+
+\begin{example}
+    对于矩阵$\bm{A}_{3 \times 3}$，已知$\bm{\alpha}_1, \bm{\alpha}_2, \bm{\alpha}_3$线性无关，且满足$\bm{A\alpha}_1=\bm{\alpha}_1+\bm{\alpha}_2+\bm{\alpha}_3,\,\bm{A\alpha}_2=2\bm{\alpha}_2+\bm{\alpha}_3,\,\bm{A\alpha}_3=2\bm{\alpha}_2+3\bm{\alpha}_3$，求可逆矩阵$\bm{P}$，使得$\bm{P}^{-1}\bm{AP}$为对角矩阵
+\end{example}
+\begin{solution}
+设 $\bm{Q}=(\bm{\alpha}_1, \bm{\alpha}_2, \bm{\alpha}_3)$，则 $\bm{A}\bm{Q} = \bm{Q} \bm{C} = \bm{Q} \begin{bNiceMatrix} 1 & 0 & 0 \\ 1 & 2 & 2 \\ 1 & 1 & 3 \end{bNiceMatrix}$．
+$\bm{C}$ 的特征值为 $|\lambda\bm{E}-\bm{C}|= (\lambda-1)(\lambda-1)(\lambda-4)$，即 $1, 1, 4$．
+\begin{enumerate}
+    \item 当 $\lambda=1$ 时，解 $(\bm{E}-\bm{C})\bm{x}=\bm{0}$.
+    \[
+    \bm{E}-\bm{C} = \begin{bNiceMatrix} 0 & 0 & 0 \\ -1 & -1 & -2 \\ -1 & -1 & -2 \end{bNiceMatrix} \xrightarrow{\text{化简}} \begin{bNiceMatrix} 1 & 1 & 2 \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{bNiceMatrix}
+    \]
+    取对应特征向量 $\bm{\gamma}_1=(1, -1, 0)^T, \bm{\gamma}_2=(2, 0, -1)^T$.
+    \item 当 $\lambda=4$ 时，解 $(4\bm{E}-\bm{C})\bm{x}=\bm{0}$.
+    \[
+    4\bm{E}-\bm{C} = \begin{bNiceMatrix} 3 & 0 & 0 \\ -1 & 2 & -2 \\ -1 & -1 & 1 \end{bNiceMatrix} \xrightarrow{\text{化简}} \begin{bNiceMatrix} 1 & 0 & 0 \\ 0 & 1 & -1 \\ 0 & 0 & 0 \end{bNiceMatrix}
+    \]
+    取对应特征向量 $\bm{\gamma}_3=(0, 1, 1)^T$.
+\end{enumerate}
+令特征向量矩阵 $\bm{R} = (\bm{\gamma}_1, \bm{\gamma}_2, \bm{\gamma}_3) = \begin{bNiceMatrix} 1 & 2 & 0 \\ -1 & 0 & 1 \\ 0 & -1 & 1 \end{bNiceMatrix}$，使得 $\bm{R}^{-1}\bm{C}\bm{R} = \bm{\Lambda}$．
+则 $\bm{P} = \bm{Q}\bm{R} = (\bm{\alpha}_1 - \bm{\alpha}_2, 2\bm{\alpha}_1 - \bm{\alpha}_3, \bm{\alpha}_2 + \bm{\alpha}_3)$．
+\end{solution}
 
 \section{施密特正交化}
 \begin{definition}
@@ -132,8 +188,8 @@
         &= \sum_{i=1}^n \lambda_i \bm{e}_i \bm{e}_i^T
     \end{align*}
 \end{proof}
-\section{相似对角化练习}
-\begin{exercise}
+
+\begin{example}
     设 $\bm{A}_{3 \times 3}$为实对称矩阵，且满足$\rank(\bm{A})=2$，已知$\bm{A}\begin{bNiceMatrix}
         1 & 1\\
         0 & 0\\
@@ -143,7 +199,7 @@
         0 & 0\\
         1 & 1
     \end{bNiceMatrix}$，求$\bm{A}$
-\end{exercise}
+\end{example}
 \begin{solution}
 设 $\bm{\alpha}_1=(1,0,-1)^T, \bm{\alpha}_2=(1,0,1)^T$．由已知条件可得：
 \[ \bm{A}\bm{\alpha}_1 = \begin{bNiceMatrix} -1 \\ 0 \\ 1 \end{bNiceMatrix} = -1 \bm{\alpha}_1, \quad \bm{A}\bm{\alpha}_2 = \begin{bNiceMatrix} 1 \\ 0 \\ 1 \end{bNiceMatrix} = 1 \bm{\alpha}_2 \]
@@ -156,9 +212,9 @@
     &= \frac{1}{2} \begin{bNiceMatrix} 0 & 0 & 2 \\ 0 & 0 & 0 \\ 2 & 0 & 0 \end{bNiceMatrix} = \begin{bNiceMatrix} 0 & 0 & 1 \\ 0 & 0 & 0 \\ 1 & 0 & 0 \end{bNiceMatrix}
 \end{align*}
 \end{solution}
-\begin{exercise}
+\begin{example}
     已知实对称矩阵$\bm{A}_{3 \times 3}$的特征值为$1,1,4$，且对应于特征值$4$的特征向量为$(1, -1, -1)^T$，求$\bm{A}$
-\end{exercise}
+\end{example}
 \begin{solution}
     令 $\bm{B} = \bm{A} - \bm{E}$，则 $\bm{B}$ 的特征值为 $0, 0, 3$.
     对应于特征值 $3$ 的特征向量为 $\bm{\xi}=(1, -1, -1)^T$.
@@ -167,16 +223,10 @@
     故
     \[ \bm{A} = \bm{B} + \bm{E} = \begin{bNiceMatrix} 2 & -1 & -1 \\ -1 & 2 & 1 \\ -1 & 1 & 2 \end{bNiceMatrix} \]
 \end{solution}
-\begin{exercise}
-    已知矩阵$\bm{A}_{3 \times 3}$满足$\rank(\bm{A}-2\bm{E})=1,\,\rank(\bm{A}+\bm{E})=2$，求$A_{11}+A_{22}+A_{33}$($A_{ii}$为代数余子式)
-\end{exercise}
-\begin{solution}
-几何重数 $g(\lambda) = n - \rank(\bm{A}-\lambda\bm{E})$．
-$g(2) = 3 - 1 = 2 \implies$ 至少 2 重特征值 2．
-$g(-1) = 3 - 2 = 1 \implies$ 至少 1 重特征值 -1．
-故 $\bm{A}$ 特征值为 $2, 2, -1$．
-\[ A_{11}+A_{22}+A_{33} = \operatorname{tr}(\bm{A}^*) = \sum_{i<j} \lambda_i\lambda_j = 2\times 2 + 2\times(-1) + 2\times(-1) = 0 \]
-\end{solution}
+
+\section{相似对角化练习}
+
+
 \begin{exercise}
     已知矩阵$\bm{A}_{3 \times 3}$满足$\bm{A}^3\bm{\alpha}=3\bm{A}\bm{\alpha}-2\bm{A}^2\bm{\alpha}$，同时又有$\bm{\alpha}, \bm{A\alpha}, \bm{A}^2\bm{\alpha}$线性无关，求证：$|\bm{A}|=|\bm{A}+3\bm{E}|=|\bm{A}-\bm{E}|=0,\,|\bm{A}+\bm{E}|=-4$
 \end{exercise}
@@ -240,27 +290,8 @@ $\bm{A}$ 与 $\bm{B}$ 均相似于 $\bm{\Lambda} = \begin{bNiceMatrix} 2 & 0 & 0
 从而 $\bm{P}_2 = \begin{bNiceMatrix} 1 & 1 & 0 \\ 0 & -3 & 0 \\ 0 & 0 & 1 \end{bNiceMatrix}$．
 $\bm{P} = \bm{P}_1 \bm{P}_2^{-1} = \begin{bNiceMatrix} 1 & 1 & -1 \\ -2 & -1 & 2 \\ 0 & 0 & 4 \end{bNiceMatrix}$．
 \end{solution}
-\begin{exercise}
-    对于矩阵$\bm{A}_{3 \times 3}$，已知$\bm{\alpha}_1, \bm{\alpha}_2, \bm{\alpha}_3$线性无关，且满足$\bm{A\alpha}_1=\bm{\alpha}_1+\bm{\alpha}_2+\bm{\alpha}_3,\,\bm{A\alpha}_2=2\bm{\alpha}_2+\bm{\alpha}_3,\,\bm{A\alpha}_3=2\bm{\alpha}_2+3\bm{\alpha}_3$，求可逆矩阵$\bm{P}$，使得$\bm{P}^{-1}\bm{AP}$为对角矩阵
-\end{exercise}
-\begin{solution}
-设 $\bm{Q}=(\bm{\alpha}_1, \bm{\alpha}_2, \bm{\alpha}_3)$，则 $\bm{A}\bm{Q} = \bm{Q} \bm{C} = \bm{Q} \begin{bNiceMatrix} 1 & 0 & 0 \\ 1 & 2 & 2 \\ 1 & 1 & 3 \end{bNiceMatrix}$．
-$\bm{C}$ 的特征值为 $|\lambda\bm{E}-\bm{C}|= (\lambda-1)(\lambda-1)(\lambda-4)$，即 $1, 1, 4$．
-\begin{enumerate}
-    \item 当 $\lambda=1$ 时，解 $(\bm{E}-\bm{C})\bm{x}=\bm{0}$.
-    \[
-    \bm{E}-\bm{C} = \begin{bNiceMatrix} 0 & 0 & 0 \\ -1 & -1 & -2 \\ -1 & -1 & -2 \end{bNiceMatrix} \xrightarrow{\text{化简}} \begin{bNiceMatrix} 1 & 1 & 2 \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{bNiceMatrix}
-    \]
-    取对应特征向量 $\bm{\gamma}_1=(1, -1, 0)^T, \bm{\gamma}_2=(2, 0, -1)^T$.
-    \item 当 $\lambda=4$ 时，解 $(4\bm{E}-\bm{C})\bm{x}=\bm{0}$.
-    \[
-    4\bm{E}-\bm{C} = \begin{bNiceMatrix} 3 & 0 & 0 \\ -1 & 2 & -2 \\ -1 & -1 & 1 \end{bNiceMatrix} \xrightarrow{\text{化简}} \begin{bNiceMatrix} 1 & 0 & 0 \\ 0 & 1 & -1 \\ 0 & 0 & 0 \end{bNiceMatrix}
-    \]
-    取对应特征向量 $\bm{\gamma}_3=(0, 1, 1)^T$.
-\end{enumerate}
-令特征向量矩阵 $\bm{R} = (\bm{\gamma}_1, \bm{\gamma}_2, \bm{\gamma}_3) = \begin{bNiceMatrix} 1 & 2 & 0 \\ -1 & 0 & 1 \\ 0 & -1 & 1 \end{bNiceMatrix}$，使得 $\bm{R}^{-1}\bm{C}\bm{R} = \bm{\Lambda}$．
-则 $\bm{P} = \bm{Q}\bm{R} = (\bm{\alpha}_1 - \bm{\alpha}_2, 2\bm{\alpha}_1 - \bm{\alpha}_3, \bm{\alpha}_2 + \bm{\alpha}_3)$．
-\end{solution}
+
+
 \ifx\allfiles\undefined
 \end{document}
 \fi

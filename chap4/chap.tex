@@ -7,9 +7,28 @@
 \else
 \fi
 \chapter{线性方程组}
+
+\section{线性方程组有解的充要条件}
 \begin{theorem}
     设$\bm{A}$为$m\times n$矩阵，$\bm{b}\in \mathbb{R}^m$，则线性方程组$\bm{Ax}=\bm{b}$有解的充分必要条件是$\rank(\bm{A}) = \rank(\bm{A}|\bm{b})$．
 \end{theorem}
+\section{线性方程组的解的结构}
+\begin{theorem}[齐次线性方程组解的结构]
+    设$\bm{A}$为$m\times n$矩阵，$\rank(\bm{A}) = r$，则齐次线性方程组$\bm{Ax}=\bm{0}$的解集构成$\R^n$的一个子空间（称为\textbf{解空间}），其维数为$n-r$．
+    若$\bm{\xi}_1,\bm{\xi}_2,\ldots,\bm{\xi}_{n-r}$为解空间的一组基（即\textbf{基础解系}），则通解为
+    \[
+        \bm{x} = k_1\bm{\xi}_1 + k_2\bm{\xi}_2 + \cdots + k_{n-r}\bm{\xi}_{n-r},\quad k_1,k_2,\ldots,k_{n-r}\in\R
+    \]
+\end{theorem}
+
+\begin{theorem}[非齐次线性方程组解的结构]
+    设$\bm{A}$为$m\times n$矩阵，$\rank(\bm{A}) = \rank(\bm{A}|\bm{b}) = r$，即$\bm{Ax}=\bm{b}$有解．
+    若$\bm{x}_0$为$\bm{Ax}=\bm{b}$的一个特解，$\bm{\xi}_1,\bm{\xi}_2,\ldots,\bm{\xi}_{n-r}$为对应齐次方程组$\bm{Ax}=\bm{0}$的基础解系，则通解为
+    \[
+        \bm{x} = \bm{x}_0 + k_1\bm{\xi}_1 + k_2\bm{\xi}_2 + \cdots + k_{n-r}\bm{\xi}_{n-r},\quad k_1,k_2,\ldots,k_{n-r}\in\R
+    \]
+\end{theorem}
+
 \begin{example}
     设$\bm{A}_{4\times 4}=(\bm{\alpha_1} , \bm{\alpha_2} , \bm{\alpha_3} , \bm{\alpha_4})$，
     且$\bm{Ax}=\bm{0}$的通解为$k(1 , 0 , -4 , 0)^T$，则下列是$\bm{A}^*\bm{x}=\bm{0}$的基础解系的是（~~~~~~）
@@ -25,6 +44,33 @@
     \bm{A}^*\bm{\alpha_3}=\bm{A}^*\bm{\alpha_4}=\bm{0}$，并且$\rank(\bm{A}^*)=1$，故$\bm{A}^*\bm{x}=\bm{0}$的基础解系有3个解向量，
     又$\bm{\alpha_1}-4\bm{\alpha_3}=\bm{0}\Rightarrow\bm{\alpha_1}\text{与}\bm{\alpha_3}$线性相关，故选C
 \end{solution}
+
+\section{解方程组的基本方法}
+\begin{theorem}[基础解系的求法]
+    设 $\bm{A}$ 为 $m\times n$ 矩阵，且 $\rank(\bm{A})=r$，则齐次线性方程组
+    \[
+    \bm{Ax}=\bm{0}
+    \]
+    的解空间维数为 $n-r$，其基础解系由 $n-r$ 个线性无关的解向量组成。
+    \textbf{求解步骤：}
+    \begin{enumerate}[label = (\arabic*)]
+        \item \textbf{消元化简：}  
+        对 $\bm{A}$ 作初等行变换，将其化为行最简形（RREF），以便直接读出变量关系。
+
+        \item \textbf{确定变量类型：}  
+        在行最简形中，每一行的主元所在列对应\textbf{主变量}；其余变量为\textbf{自由变量}，自由变量的个数为 $n-r$。
+
+        \item \textbf{引入参数：}  
+        用自由变量表示主变量，将解写成参数形式（解空间的通解表达）。
+
+        \item \textbf{构造基础解向量：}  
+        令每个自由变量依次取 $1$，其余取 $0$（即标准基），代入通解，得到一组解向量。
+
+        \item \textbf{得到基础解系：}  
+        所有得到的解向量线性无关，共 $n-r$ 个，即构成基础解系。
+    \end{enumerate}
+\end{theorem}
+
 \begin{example}
     设$\bm{A}_{4\times 4}=(\bm{\alpha_1} , \bm{\alpha_2} , \bm{\alpha_3} , \bm{\alpha_4})$，
     且$\bm{Ax}=\bm{\beta}$的通解为$k(1 , -2 , 4 , 0)^T+(1, 2, 2,1)^T$，记$\bm{B}=(\bm{\alpha_3}, \bm{\alpha_2}, \bm{\alpha_1}, 
@@ -38,9 +84,52 @@
         \bm{x} = k_1(4, -2, 1, 0)^T + k_2(2, 2, 1, -1)^T + (0, -1, 1, 0)^T
     \]
 \end{solution}
+
+\section{练习}
+\begin{exercise}
+    设矩阵$A=\begin{bNiceMatrix}
+    0 & -1 & 2\\
+    -1 & 0 & 2\\
+    -1 & -1 & 3
+    \end{bNiceMatrix}$
+    ，求所有满足
+    $\begin{cases}
+        A^2\alpha=\alpha+2\beta\\
+        A\alpha=\alpha+\beta
+    \end{cases}$
+    的向量 $\alpha,\beta$
+\end{exercise}
+\begin{solution}
+    将 $\beta = (A - E)\alpha$ 代入 $A^2\alpha = \alpha + 2\beta$得
+    \[A^2\alpha = \alpha + 2(A - E)\alpha\implies (A - E)^2\alpha = \bm{0}\]
+    计算
+    \[
+        A - E = \begin{bNiceMatrix}
+            -1 & -1 & 2\\
+            -1 & -1 & 2\\
+            -1 & -1 & 2
+        \end{bNiceMatrix},\qquad
+        (A - E)^2 = \begin{bNiceMatrix}
+            -1 & -1 & 2\\
+            -1 & -1 & 2\\
+            -1 & -1 & 2
+        \end{bNiceMatrix}^2 = \bm{0}
+    \]
+    故 $(A - E)^2\alpha = \bm{0}$ 对任意 $\alpha\in\R^3$ 成立，进而 $\beta = (A - E)\alpha$，即
+    \[\boxed{\alpha = \begin{bNiceMatrix}
+        x_1\\
+        x_2\\
+        x_3
+    \end{bNiceMatrix},\quad \beta = \begin{bNiceMatrix}
+        -x_1 - x_2 + 2x_3\\
+        -x_1 - x_2 + 2x_3\\
+        -x_1 - x_2 + 2x_3
+    \end{bNiceMatrix},\quad x_1,x_2,x_3\in\R}\]
+\end{solution}
+
 \newcounter{inleq}
 \setcounter{inleq}{1}
-\begin{example}
+\begin{exercise}
     已知方程组(\Roman{inleq})
     $\begin{cases}
         x_1+2x_2+3x_3=0\\
@@ -54,7 +143,7 @@
         2x_1+b^2x_2+(c+1)x_3=0\\
     \end{cases}$
     有相同的解集，求$a,b,c$的值．
-\end{example}
+\end{exercise}
 \setcounter{inleq}{1}
 \begin{solution}
     记方程组(\Roman{inleq})\refstepcounter{inleq}(\Roman{inleq})的系数矩阵分别为$\bm{A},\bm{B}$，则

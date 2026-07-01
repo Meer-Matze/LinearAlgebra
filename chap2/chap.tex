@@ -19,6 +19,30 @@
     \]
 \end{theorem}
 \subsection{伴随矩阵}
+\begin{definition}
+    设$\bm{A} = (a_{ij})_{n \times n}$，在$\bm{A}$中划去$a_{ij}$所在的第$i$行和第$j$列后，剩下的$n-1$阶行列式称为$a_{ij}$的\textbf{余子式}，记为$M_{ij}$．
+\end{definition}
+\begin{definition}
+    设$\bm{A} = (a_{ij})_{n \times n}$，则$a_{ij}$的\textbf{代数余子式}$A_{ij}$定义为
+    \[
+        A_{ij} = (-1)^{i+j}M_{ij}
+    \]
+    其中$M_{ij}$为$a_{ij}$的余子式．
+\end{definition}
+\begin{definition}
+    设$\bm{A} = (a_{ij})_{n \times n}$，将$\bm{A}$的每个元素的代数余子式按转置方式排列得到的矩阵称为$\bm{A}$的\textbf{伴随矩阵}，记为$\bm{A}^*$，即
+    \[
+        \bm{A}^* =
+        \begin{bNiceMatrix}
+            A_{11} & A_{21} & \cdots & A_{n1}\\
+            A_{12} & A_{22} & \cdots & A_{n2}\\
+            \vdots & \vdots & \ddots & \vdots\\
+            A_{1n} & A_{2n} & \cdots & A_{nn}
+        \end{bNiceMatrix}
+        = (A_{ji})_{n \times n}
+    \]
+    其中$A_{ij} = (-1)^{i+j}M_{ij}$，$M_{ij}$为$a_{ij}$的余子式．
+\end{definition}
 \begin{theorem}
     设$\bm{A}, \bm{B}$为同型矩阵，$k$为数，则有如下伴随矩阵的性质：
     \[
