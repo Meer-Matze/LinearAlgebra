@@ -200,6 +200,9 @@
 \end{theorem}
 \newpage
 \section{抽象矩阵的逆}
+\begin{theorem}
+    若矩阵$\bm{A},\bm{B}$满足$\bm{AB}=\bm{BA}$，则关于$\bm{A},\bm{B},\bm{A}^{-1},\bm{B}^{-1}$的多项式可按普通代数多项式规律运算，特别地，分配律、交换律、二项式定理等成立．
+\end{theorem}
 \begin{example}
     设$n$阶矩阵$\bm{A}$满足$\bm{A}^2 + 4\bm{A} - 5\bm{E} = \bm{0}$，求:
     \begin{enumerate}[label = (\arabic*)]
@@ -210,9 +213,9 @@
 \end{example}
 \begin{solution}
     \begin{enumerate}[label = (\arabic*)]
-        \item $\bm{A}^2 + 4\bm{A} = 5\bm{E} \Rightarrow \bm{A}(\bm{A} + 4\bm{E}) = 5\bm{E} \Rightarrow \bm{A}^{-1} = \dfrac{\bm{A} + 4\bm{E}}{5}$
+        \item $\bm{A}^2 + 4\bm{A} = 5\bm{E} \implies \bm{A}(\bm{A} + 4\bm{E}) = 5\bm{E} \implies \bm{A}^{-1} = \dfrac{\bm{A} + 4\bm{E}}{5}$
         \item $(\bm{A}+4\bm{E})^{-1} = \dfrac{\bm{A}}{5}$
-        \item $(\bm{A}+\bm{E})(\bm{A}+3\bm{E}) = 8\bm{E} \Rightarrow (\bm{A}+\bm{E})^{-1} = \dfrac{\bm{A}+3\bm{E}}{8}$
+        \item $(\bm{A}+\bm{E})(\bm{A}+3\bm{E}) = 8\bm{E} \implies (\bm{A}+\bm{E})^{-1} = \dfrac{\bm{A}+3\bm{E}}{8}$
     \end{enumerate}
 \end{solution}
 \begin{example}
@@ -254,7 +257,7 @@
     因此$\bm{B} - \bm{A} = -\bm{E}$\\
     法二（小题）：取$\bm{A} = (a) = a, E = 1, B = b$，则由题意得
     \[
-        \left(1 - \dfrac{1}{1 - a}\right)b = a \Rightarrow b = \dfrac{a(1 - a)}{-a} = a - 1
+        \left(1 - \dfrac{1}{1 - a}\right)b = a \implies b = \dfrac{a(1 - a)}{-a} = a - 1
     \]
     因此$b - a = -1$，即$\bm{B} - \bm{A} = -\bm{E}$
 \end{solution}
@@ -342,7 +345,7 @@
     \end{tasks}
 \end{example}
 \begin{solution}
-    $\bm{B} = \bm{A}\bm{E}_{12} \Rightarrow \bm{B}^* = \bm{E}_{12}^*\cdot \bm{A}^* = |\bm{E}_{12}|\bm{E}_{12}^{-1}\bm{A}^* = \bm{E}_{12}(-\bm{A}^*)$
+    $\bm{B} = \bm{A}\bm{E}_{12} \implies \bm{B}^* = \bm{E}_{12}^*\cdot \bm{A}^* = |\bm{E}_{12}|\bm{E}_{12}^{-1}\bm{A}^* = \bm{E}_{12}(-\bm{A}^*)$
 \end{solution}
 \begin{example}
     已知$\bm{A},\bm{P},\bm{Q}$均为三阶方阵，且$\bm{P}$可逆，$\bm{P}^{-1}\bm{A}\bm{P} = \begin{bNiceMatrix}[columns-width = 1.5em]
@@ -443,8 +446,8 @@
     \rank(\bm{A}\bm{A}^T)$
 \end{theorem}
 \begin{proof}
-    $\forall \bm{\xi} \in N(\bm{A})$，则$\bm{A}\bm{\xi} = \bm{0} \Rightarrow \bm{A}^T\bm{A}\bm{\xi} = \bm{0} \Rightarrow \bm{\xi} \in N(\bm{A}^T\bm{A})$，即$N(\bm{A}) \subseteq N(\bm{A}^T\bm{A})$\\
-    $\forall \bm{\eta} \in N(\bm{A}^T\bm{A})$，则$\bm{A}^T\bm{A}\bm{\eta} = \bm{0} \Rightarrow \bm{\eta}^T\bm{A}^T\bm{A}\bm{\eta} = (\bm{A}\bm{\eta})^T(\bm{A}\bm{\eta}) = 0 \Rightarrow \bm{A}\bm{\eta} = \bm{0} \Rightarrow \bm{\eta} \in N(\bm{A})$，即$N(\bm{A}^T\bm{A}) \subseteq N(\bm{A})$\\
+    $\forall \bm{\xi} \in N(\bm{A})$，则$\bm{A}\bm{\xi} = \bm{0} \implies \bm{A}^T\bm{A}\bm{\xi} = \bm{0} \implies \bm{\xi} \in N(\bm{A}^T\bm{A})$，即$N(\bm{A}) \subseteq N(\bm{A}^T\bm{A})$\\
+    $\forall \bm{\eta} \in N(\bm{A}^T\bm{A})$，则$\bm{A}^T\bm{A}\bm{\eta} = \bm{0} \implies \bm{\eta}^T\bm{A}^T\bm{A}\bm{\eta} = (\bm{A}\bm{\eta})^T(\bm{A}\bm{\eta}) = 0 \implies \bm{A}\bm{\eta} = \bm{0} \implies \bm{\eta} \in N(\bm{A})$，即$N(\bm{A}^T\bm{A}) \subseteq N(\bm{A})$\\
     因此$N(\bm{A}) = N(\bm{A}^T\bm{A})$，由秩-零化度定理得
     \[
         \rank(\bm{A}) = n - \dim N(\bm{A}) = n - \dim N(\bm{A}^T\bm{A}) = \rank(\bm{A}^T\bm{A})
@@ -461,8 +464,8 @@
     \]
 \end{theorem}
 \begin{proof}
-    $\forall \bm{\xi} \in N(\bm{A})\Rightarrow\bm{A}\bm{\xi} = \bm{0}\Rightarrow \bm{P}\bm{A}\bm{\xi} = \bm{0} \Rightarrow \bm{\xi} \in N(\bm{P}\bm{A})$，即$N(\bm{A}) \subseteq N(\bm{P}\bm{A})$\\
-    $\forall \bm{\eta} \in N(\bm{P}\bm{A})\Rightarrow \bm{P}\bm{A}\bm{\eta} = \bm{0} \Rightarrow \bm{A}\bm{\eta} \in N(\bm{P})$，又$\rank(\bm{P}) = m$，故$N(\bm{P}) = \{\bm{0}\}$，即$\bm{A}\bm{\eta} = \bm{0} \Rightarrow \bm{\eta} \in N(\bm{A})$，即$N(\bm{P}\bm{A}) \subseteq N(\bm{A})$\\
+    $\forall \bm{\xi} \in N(\bm{A})\implies\bm{A}\bm{\xi} = \bm{0}\implies \bm{P}\bm{A}\bm{\xi} = \bm{0} \implies \bm{\xi} \in N(\bm{P}\bm{A})$，即$N(\bm{A}) \subseteq N(\bm{P}\bm{A})$\\
+    $\forall \bm{\eta} \in N(\bm{P}\bm{A})\implies \bm{P}\bm{A}\bm{\eta} = \bm{0} \implies \bm{A}\bm{\eta} \in N(\bm{P})$，又$\rank(\bm{P}) = m$，故$N(\bm{P}) = \{\bm{0}\}$，即$\bm{A}\bm{\eta} = \bm{0} \implies \bm{\eta} \in N(\bm{A})$，即$N(\bm{P}\bm{A}) \subseteq N(\bm{A})$\\
     因此$N(\bm{A}) = N(\bm{P}\bm{A})$，由秩-零化度定理得
     \[
         \rank(\bm{A}) = n - \dim N(\bm{A}) = n - \dim N(\bm{P}\bm{A}) = \rank(\bm{P}\bm{A})
@@ -479,7 +482,7 @@
 \begin{proof}
     由题意得$C(\bm{B}) \subseteq N(\bm{A})$，故$\dim C(\bm{B}) \leq \dim N(\bm{A})$，即
     \[
-        \rank(\bm{B}) \leq n - \rank(\bm{A}) \Rightarrow \rank(\bm{A}) + \rank(\bm{B}) \leq n
+        \rank(\bm{B}) \leq n - \rank(\bm{A}) \implies \rank(\bm{A}) + \rank(\bm{B}) \leq n
     \]
 \end{proof}
 \begin{theorem}
@@ -563,13 +566,13 @@
         \end{bNiceMatrix}\xrightarrow{\text{将第1列右乘}-\bm{B}\text{后加到第2列}} \begin{bNiceMatrix}
             \bm{A} & \bm{0}\\
             \bm{0} & \bm{A}^T
-        \end{bNiceMatrix}\Rightarrow \rank\begin{bNiceMatrix}
+        \end{bNiceMatrix}\implies \rank\begin{bNiceMatrix}
             \bm{A} & \bm{AB}\\
             \bm{0} & \bm{A}^T
         \end{bNiceMatrix}=2~\rank(\bm{A})
     \]
     选项C：\\
-        由于在进行列变换时只能进行右乘，故无法将$\bm{BA}$化为$\bm{0}$，则C选项不成立．\\
+        由于\textbf{进行列变换时只能右乘矩阵}（左乘与右乘秩满矩阵等效为行变换与列变换），故无法将$\bm{BA}$化为$\bm{0}$，则C选项不成立．\\
     选项D：\\
     \[\begin{bNiceMatrix}
             \bm{A} & \bm{0}\\
@@ -577,7 +580,7 @@
         \end{bNiceMatrix}\xrightarrow{\text{将第1行左乘}-\bm{B}\text{后加到第2行}} \begin{bNiceMatrix}
             \bm{A} & \bm{0}\\
             \bm{0} & \bm{A}^T
-        \end{bNiceMatrix}\Rightarrow\rank\begin{bNiceMatrix}
+        \end{bNiceMatrix}\implies\rank\begin{bNiceMatrix}
             \bm{A} & \bm{0}\\
             \bm{BA} & \bm{A}^T
         \end{bNiceMatrix}=2~\rank(\bm{A})
@@ -595,13 +598,13 @@
 \begin{solution}
     由题意得
     \[
-        \bm{A}\bm{B} = \bm{B} + 3\bm{A} \Rightarrow (\bm{A}-\bm{E})\bm{B}
+        \bm{A}\bm{B} = \bm{B} + 3\bm{A} \implies (\bm{A}-\bm{E})\bm{B}= 3\bm{A}
     \]
-    又$|\bm{A}^*|=8=|\bm{A}|^3\Rightarrow|\bm{A}|=2\Rightarrow\bm{A}$可逆$\Rightarrow (\bm{A}-\bm{E})\text{与}\bm{B}$均可逆\\
+    又$|\bm{A}^*|=8=|\bm{A}|^3\implies|\bm{A}|=2\implies\bm{A}$可逆$\implies (\bm{A}-\bm{E})\text{与}\bm{B}$均可逆\\
     故$\bm{B} = 3(\bm{A}-\bm{E})^{-1}\bm{A}$则
     \[
         \bm{B}^* = 3^3\bm{A}^*\left[(\bm{A}-\bm{E})^{-1}\right]^*=27\bm{A}^*\cdot\dfrac{\bm{A}-\bm{E}}{|\bm{A}-\bm{E}|}
-        =27\dfrac{(2\bm{E}-\bm{A}^*)|\bm{A}^*|}{|\bm{A}-\bm{E}|||\bm{A}^*|}=216\dfrac{2\bm{E}-\bm{A}^*}{|2\bm{E}-\bm{A}^*|}
+        =27\dfrac{(2\bm{E}-\bm{A}^*)|\bm{A}^*|}{|\bm{A}-\bm{E}|\cdot |\bm{A}^*|}=216\dfrac{2\bm{E}-\bm{A}^*}{|2\bm{E}-\bm{A}^*|}
     \]
     而
     \[
@@ -633,7 +636,7 @@
 \end{exercise}
 \begin{solution}
     \[
-    \forall i \in [1,n]\cap\mathbb{N},A_{i1}+A_{i2}+\cdots + A_{i,n+1}=0\Rightarrow\displaystyle
+    \forall i \in [1,n]\cap\mathbb{N},A_{i1}+A_{i2}+\cdots + A_{i,n+1}=0\implies\displaystyle
     \sum_{i=1}^{n+1}\sum_{j=1}^{n+1}A_{ij}=|\bm{A}|
     \]
     对$\bm{A}$逐行对调$\dfrac{n(n+1)}{2}$次变为范德蒙德行列式，故

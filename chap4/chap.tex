@@ -40,11 +40,24 @@
     \end{tasks}
 \end{example}
 \begin{solution}
-    由通解可知，$\rank(\bm{A}) = 3$，$\bm{A}^*\bm{A}=|\bm{A}|\bm{E}=\bm{0}\Rightarrow\bm{A}^*\bm{\alpha_1}=\bm{A}^*\bm{\alpha_2}=
+    由通解可知，$\rank(\bm{A}) =4-\operatorname{dim}N(\bm{A})= 3$，\\
+    $\bm{A}^*\bm{A}=|\bm{A}|\bm{E}=\bm{0}\implies\bm{A}^*\bm{\alpha_1}=\bm{A}^*\bm{\alpha_2}=
     \bm{A}^*\bm{\alpha_3}=\bm{A}^*\bm{\alpha_4}=\bm{0}$，并且$\rank(\bm{A}^*)=1$，故$\bm{A}^*\bm{x}=\bm{0}$的基础解系有3个解向量，
-    又$\bm{\alpha_1}-4\bm{\alpha_3}=\bm{0}\Rightarrow\bm{\alpha_1}\text{与}\bm{\alpha_3}$线性相关，故选C
+    又$\bm{\alpha_1}-4\bm{\alpha_3}=\bm{0}\implies\bm{\alpha_1}\text{与}\bm{\alpha_3}$线性相关，故选\boxed{\text{C}}
 \end{solution}
-
+\begin{example}
+    设$\bm{A}_{4\times 4}=(\bm{\alpha_1} , \bm{\alpha_2} , \bm{\alpha_3} , \bm{\alpha_4})$，
+    且$\bm{Ax}=\bm{\beta}$的通解为$k(1 , -2 , 4 , 0)^T+(1, 2, 2,1)^T$，记$\bm{B}=(\bm{\alpha_3}, \bm{\alpha_2}, \bm{\alpha_1}, 
+    \bm{\beta}-\bm{\alpha_4})$，求$\bm{Bx}=\bm{\alpha_1}-\bm{\alpha_2}$的通解．
+\end{example}
+\begin{solution}
+    由题意得到$\rank(\bm{A})=3$，$\bm{\alpha_1}-2\bm{\alpha_2}+4\bm{\alpha_3}=\bm{0},\bm{\alpha_1}+2\bm{\alpha_2}+2\bm{\alpha_3}+\bm{\alpha_4}=\bm{\beta}
+    \implies (4, -2, 1, 0)^T,\;(2, 2, 1, -1)^T$是$\bm{Bx}=\bm{0}$的解，且二者线性无关．
+    显然$(0, -1, 1, 0)^T$是$\bm{Bx}=\bm{\alpha_1}-\bm{\alpha_2}$的一个特解，$\rank(\bm{B})=2$，于是可知$\bm{Bx}=\bm{\alpha_1}-\bm{\alpha_2}$的通解为
+    \[
+        \boxed{\bm{x} = k_1(4, -2, 1, 0)^T + k_2(2, 2, 1, -1)^T + (0, -1, 1, 0)^T}
+    \]
+\end{solution}
 \section{解方程组的基本方法}
 \begin{theorem}[基础解系的求法]
     设 $\bm{A}$ 为 $m\times n$ 矩阵，且 $\rank(\bm{A})=r$，则齐次线性方程组
@@ -70,57 +83,78 @@
         所有得到的解向量线性无关，共 $n-r$ 个，即构成基础解系。
     \end{enumerate}
 \end{theorem}
-
 \begin{example}
-    设$\bm{A}_{4\times 4}=(\bm{\alpha_1} , \bm{\alpha_2} , \bm{\alpha_3} , \bm{\alpha_4})$，
-    且$\bm{Ax}=\bm{\beta}$的通解为$k(1 , -2 , 4 , 0)^T+(1, 2, 2,1)^T$，记$\bm{B}=(\bm{\alpha_3}, \bm{\alpha_2}, \bm{\alpha_1}, 
-    \bm{\beta}-\bm{\alpha_4})$，求$\bm{Bx}=\bm{\alpha_1}-\bm{\alpha_2}$的通解．
+    已知线性方程组
+    \begin{tasks}[style = itemize,label = (\Roman*)](2)
+    \task $\begin{cases}
+        x_1+x_2=0\\
+        x_2-x_4=0
+    \end{cases}$
+    \task $\begin{cases}
+        x_1-x_2+x_3=0\\
+        x_2-x_3+x_4=0
+    \end{cases}$
+    \end{tasks}
+    求两个方程组的公共解
 \end{example}
 \begin{solution}
-    由题意得到$\rank(\bm{A})=3$，$\bm{\alpha_1}-2\bm{\alpha_2}+4\bm{\alpha_3}=\bm{0},\bm{\alpha_1}+\bm{\alpha_2}+2\bm{\alpha_3}+\bm{\alpha_4}=\bm{\beta}
-    \Rightarrow (4, -2, 1, 0)^T,(2, 2, 1, -1)^T$是$\bm{Bx}=\bm{0}$的解，且二者线性无关．
-    显然$(0, -1, 1, 0)^T$是$\bm{Bx}=\bm{\alpha_1}-\bm{\alpha_2}$的一个特解，$\rank(\bm{B})=2$，于是可知$\bm{Bx}=\bm{\alpha_1}-\bm{\alpha_2}$的通解为
+    设方程组I,\,II的系数矩阵分别为$\bm{A},\bm{B}$，则公共解为$\begin{bNiceMatrix}
+        \bm{A}\\
+        \bm{B}
+    \end{bNiceMatrix}\bm{x}=\bm{0}$的解集
     \[
-        \bm{x} = k_1(4, -2, 1, 0)^T + k_2(2, 2, 1, -1)^T + (0, -1, 1, 0)^T
+        \begin{bNiceMatrix}
+            1 & 1 & 0 & 0\\
+            0 & 1 & 0 & -1\\
+            1 & -1 & 1 & 0\\
+            0 & 1 & -1 & 1
+        \end{bNiceMatrix}\xrightarrow{\text{初等行变换}}\begin{bNiceMatrix}
+            1 & 0 & 0 & 1\\
+            0 & 1 & 0 & -1\\
+            0 & 0 & 1 & -2\\
+            0 & 0 & 0 & 0
+        \end{bNiceMatrix}
     \]
+    将$x_4$定为自由变量，令$x_4=1$，得基础解系为$(-1, 1, 2, 1)^T$，故通解为
+    \[\boxed{\bm{x} = k(-1, 1, 2, 1)^T,\quad k\in\R}\]
 \end{solution}
 
 \section{练习}
 \begin{exercise}
-    设矩阵$A=\begin{bNiceMatrix}
+    设矩阵$\bm{A}=\begin{bNiceMatrix}
     0 & -1 & 2\\
     -1 & 0 & 2\\
     -1 & -1 & 3
     \end{bNiceMatrix}$
     ，求所有满足
     $\begin{cases}
-        A^2\alpha=\alpha+2\beta\\
-        A\alpha=\alpha+\beta
+        \bm{A}^2\bm{\alpha}=\bm{\alpha}+\bm{\beta}\\
+        \bm{A}\bm{\alpha}=\bm{\alpha}+\bm{\beta}
     \end{cases}$
-    的向量 $\alpha,\beta$
+    的向量 $\bm{\alpha},\bm{\beta}$
 \end{exercise}
 \begin{solution}
-    将 $\beta = (A - E)\alpha$ 代入 $A^2\alpha = \alpha + 2\beta$得
-    \[A^2\alpha = \alpha + 2(A - E)\alpha\implies (A - E)^2\alpha = \bm{0}\]
+    将 $\bm{\beta} = (\bm{A} - \bm{E})\bm{\alpha}$ 代入 $\bm{A}^2\bm{\alpha} = \bm{\alpha} + 2\bm{\beta}$得
+    \[\bm{A}^2\bm{\alpha} = \bm{\alpha} + 2(\bm{A} - \bm{E})\bm{\alpha}\implies (\bm{A} - \bm{E})^2\bm{\alpha} = \bm{0}\]
     计算
     \[
-        A - E = \begin{bNiceMatrix}
+        \bm{A} - \bm{E} = \begin{bNiceMatrix}
             -1 & -1 & 2\\
             -1 & -1 & 2\\
             -1 & -1 & 2
         \end{bNiceMatrix},\qquad
-        (A - E)^2 = \begin{bNiceMatrix}
+        (\bm{A} - \bm{E})^2 = \begin{bNiceMatrix}
             -1 & -1 & 2\\
             -1 & -1 & 2\\
             -1 & -1 & 2
         \end{bNiceMatrix}^2 = \bm{0}
     \]
-    故 $(A - E)^2\alpha = \bm{0}$ 对任意 $\alpha\in\R^3$ 成立，进而 $\beta = (A - E)\alpha$，即
-    \[\boxed{\alpha = \begin{bNiceMatrix}
+    故 $(\bm{A} - \bm{E})^2\bm{\alpha} = \bm{0}$ 对任意 $\bm{\alpha}\in\R^3$ 成立，进而 $\bm{\beta} = (\bm{A} - \bm{E})\bm{\alpha}$，即
+    \[\boxed{\bm{\alpha} = \begin{bNiceMatrix}
         x_1\\
         x_2\\
         x_3
-    \end{bNiceMatrix},\quad \beta = \begin{bNiceMatrix}
+    \end{bNiceMatrix},\quad \bm{\beta} = \begin{bNiceMatrix}
         -x_1 - x_2 + 2x_3\\
         -x_1 - x_2 + 2x_3\\
         -x_1 - x_2 + 2x_3
@@ -151,8 +185,8 @@
     =\rank\begin{bNiceMatrix}
         \bm{A}\\
         \bm{B}
-    \end{bNiceMatrix}\text{且}\rank(\bm{B})\leq 2\Rightarrow\rank(\bm{A})\leq 2\]
-    故$|\bm{A}|=0\Rightarrow a=2\Rightarrow\rank(\bm{A})=2\Rightarrow\rank(\bm{B})
+    \end{bNiceMatrix}\,\text{且}\,\rank(\bm{B})\leq 2\implies\rank(\bm{A})\leq 2\]
+    故$|\bm{A}|=0\implies a=2\implies\rank(\bm{A})=2\implies\rank(\bm{B})
     =\rank\begin{bNiceMatrix}
         \bm{A}\\
         \bm{B}
@@ -167,13 +201,13 @@
             1 & 1 & 2\\
             1 & b & c\\
             2 & b^2 & c+1
-        \end{bNiceMatrix}\rightarrow\begin{bNiceMatrix}
+        \end{bNiceMatrix}\implies\begin{bNiceMatrix}
             1 & 2 & 3\\
             0 & 1 & 1\\
             0 & 0 & c-b-1\\
             0 & 0 & -bc-c+3b+1\\
             0 & 0 & 0
-        \end{bNiceMatrix}\Rightarrow\begin{cases}
+        \end{bNiceMatrix}\implies\begin{cases}
             c-b-1=0\\
             -bc-c+3b+1=0
         \end{cases}
@@ -184,7 +218,7 @@
     \end{cases}$或$\begin{cases}
         b=1\\
         c=2
-    \end{cases}$，经检验，$b=0,c=1$时，$\rank({\bm{B}})=1$，故舍去，最终结果为\[a=2,b=1,c=2\]
+    \end{cases}$，经检验，$b=0,c=1$时，$\rank({\bm{B}})=1$，故舍去，最终结果为\[\boxed{a=2,b=1,c=2}\]
 \end{solution}
 \ifx\allfiles\undefined
 \end{document}
